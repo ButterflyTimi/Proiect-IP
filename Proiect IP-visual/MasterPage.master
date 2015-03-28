@@ -1,0 +1,134 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Click Travel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1"> 
+    <link rel="icon" type="image/x-icon" href="visual-travel.png">
+    <script type="text/javascript" src="Scripts/jquery-2.1.1.js"></script>
+    <!--Bootstrat CSS-->
+
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="style/css/main.css">
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <header class="container-fluid">
+        <div class="header-wrapper">
+            <div class="header-logo">
+                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='~/Home.aspx'>        
+	                <img src="LogoIP-2.png" alt="carti"/>
+                </asp:HyperLink>
+            </div>
+            <div class="header-login-search">
+                <div class="login-modals-wrapper">
+                    <div class="login-modals">
+                    
+                    <!--<asp:LoginView ID="LoginView1" runat="server">
+
+                        <AnonymousTemplate>
+                            <div class="login-buttons">
+                                <asp:Label ID="loginButton" runat="server" Text="Login" CssClass="loginAndRegister" data-toggle="modal" data-target="#loginModal"></asp:Label>
+                                <asp:Label ID="registrationButton" runat="server" Text="Inregistrare" CssClass="loginAndRegister"></asp:Label>
+                            </div>
+                        </AnonymousTemplate>
+
+                        <RoleGroups>
+                            <asp:RoleGroup Roles="Admin">
+                                <ContentTemplate>
+                                    <div class="login-buttons">
+                                        <span id="loggedInText"> Bine ai venit, 
+                                            <asp:LoginName ID="LoginName1" runat="server" />!
+                                            <asp:LoginStatus ID="LoginStatus" runat="server" CssClass="logOut"/>
+                                        </span>
+                                    </div>
+                                </ContentTemplate>
+                            </asp:RoleGroup>
+                        </RoleGroups>
+
+                        <LoggedInTemplate>
+                            <div class="login-buttons">
+                                <span id="loggedInText"> Bine ai venit, 
+                                    <asp:LoginName ID="LoginName1" runat="server" />!
+                                    <asp:LoginStatus ID="LoginStatus" runat="server" CssClass="logOut"/>
+                                </span>
+                            </div>
+                        </LoggedInTemplate>
+                    </asp:LoginView>-->
+
+                    </div>
+                </div>
+                <div class="search-wrapper">
+                    <div class="search">
+                        <div class="input-group">
+                            <asp:TextBox ID="searchTB" CssClass="form-control" runat="server" placeholder=""></asp:TextBox>
+                            <span class="input-group-btn">
+                                <asp:Button ID="searchButton" CssClass="btn btn-default " runat="server" Text="Cauta" onclick="Button1_Click" ValidationGroup="separat" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl='~/Home.aspx'> 
+                        Acasa
+                        </asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl='~/Oferte.aspx'> 
+                        Oferte
+                        </asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl='~/.aspx'> 
+                        Despre noi
+                        </asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl='~/.aspx'> 
+                        Contact
+                        </asp:HyperLink>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+
+    <footer class="container-fluid">
+        <div class="footer-wrapper">
+            <div class="footer-copyright">
+		        &copy; 2014 - 2015 Proiect IP. SRG Programmers
+            </div>
+        </div>
+    </footer>
+    </form>
+
+    <script type="text/javascript" src="Scripts/bootstrap.js"></script>
+</body>
+</html>
