@@ -24,7 +24,7 @@ public partial class Autentificare : System.Web.UI.Page
         if (temp == 1)
         {
             con.Open();
-            string verifpar = "select parola from aspnet_Membership where username='" + username.Text + "'";
+            string verifpar = "select password from aspnet_Membership where username='" + username.Text + "'";
             SqlCommand parcom = new SqlCommand(verifpar, con);
             string parola = parcom.ExecuteScalar().ToString().Replace(" ", "");
             if (parola == parolabox.Text)
