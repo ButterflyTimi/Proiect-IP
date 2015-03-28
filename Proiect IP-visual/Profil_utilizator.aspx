@@ -29,8 +29,8 @@
     <asp:Label ID="Label2" runat="server" Text="Ce tip de destinatii va intereseaza?"></asp:Label>
 
         <br />
-        <asp:RadioButton ID="Munte" runat="server" Text="Munte" />
-        <asp:RadioButton ID="Mare" runat="server" Text="Mare" />
+        <asp:RadioButton ID="Munte" runat="server" Text="Munte" GroupName="1"/>
+        <asp:RadioButton ID="Mare" runat="server" Text="Mare" GroupName="1"/>
 
         <br />
         <asp:Label ID="Label3" runat="server" Text="Ce forma de turism va intereseaza?"></asp:Label>

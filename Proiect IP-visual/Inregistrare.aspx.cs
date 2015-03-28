@@ -50,7 +50,7 @@ public partial class Inregistrare : System.Web.UI.Page
             com.Parameters.AddWithValue("@parola", parola.Text);
 
             com.ExecuteNonQuery();
-           // Response.Redirect("Home.aspx");
+            Response.Redirect("Home.aspx");
             Response.Write("Inregistrare reusita");
             con.Close();
         }
