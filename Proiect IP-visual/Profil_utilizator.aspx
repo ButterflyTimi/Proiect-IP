@@ -5,24 +5,31 @@
     
         <table class="auto-style1">
             <tr>
-                <td class="auto-style11" style="text-align: left">UserName:</td>
+                <td class="auto-style11" style="text-align: left">UserName Vechi:</td>
                 <td style="text-align: left" class="auto-style8">
-                    <asp:TextBox ID="username" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="usernamevechibox" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style9">
-                    <asp:RequiredFieldValidator ID="usernamevalidator" runat="server" ControlToValidate="username" ErrorMessage="Camp obligatoriu"></asp:RequiredFieldValidator>
+                <td class="auto-style11" style="text-align: left">UserName Nou:</td>
+                <td style="text-align: left" class="auto-style8">
+                    <asp:TextBox ID="usernamenoubox" runat="server"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:Button ID="Button1" runat="server" Text="Schimba parola" />
+                    <asp:Button ID="username" runat="server" Text="Schimba username" 
+                        onclick="username_Click" />
                 </td>
+                
             </tr>
             <tr>
-                <td class="auto-style12">Parola</td>
+                <td class="auto-style12">Parola veche</td>
                 <td class="auto-style6">
-                    <asp:TextBox ID="parolabox" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="parolavechebox" runat="server" TextMode="Password"></asp:TextBox>
                 </td>
-                <td class="auto-style2">
-                    <asp:RequiredFieldValidator ID="parolavalidator" runat="server" ControlToValidate="parolabox" ErrorMessage="Camp obligatoriu"></asp:RequiredFieldValidator>
+                <td class="auto-style12">Parola noua</td>
+                <td class="auto-style6">
+                    <asp:TextBox ID="parolanouabox" runat="server" TextMode="Password"></asp:TextBox>
+                </td>
+                <td>
+                    <asp:Button ID="parola" runat="server" Text="Schimba parola" />
                 </td>
             </tr>
     </table >
@@ -36,38 +43,38 @@
         <asp:Label ID="Label3" runat="server" Text="Ce forma de turism va intereseaza?"></asp:Label>
 
         <br />
-        <asp:RadioButton ID="Montan" runat="server" text="Montan"/>
-        <asp:RadioButton ID="Sportiv" runat="server" text="Sportiv"/>
-        <asp:RadioButton ID="Recreere" runat="server" text="Recreere"/>
-        <asp:RadioButton ID="Cultural" runat="server" text="Cultural"/>
-        <asp:RadioButton ID="Ingrijire_Sanatate" runat="server" text="Ingrijire Sanatate"/>
+        <asp:RadioButton ID="Montan" runat="server" text="Montan" GroupName="2"/>
+        <asp:RadioButton ID="Sportiv" runat="server" text="Sportiv" GroupName="2"/>
+        <asp:RadioButton ID="Recreere" runat="server" text="Recreere" GroupName="2"/>
+        <asp:RadioButton ID="Cultural" runat="server" text="Cultural" GroupName="2"/>
+        <asp:RadioButton ID="Ingrijire_Sanatate" runat="server" text="Ingrijire Sanatate" GroupName="2"/>
 
         <br />
         <asp:Label ID="Label4" runat="server" Text="Ce durata de sejur preferati?"></asp:Label>
 
         <br />
-        <asp:RadioButton ID="scurta" runat="server" text="scurta"/>
-        <asp:RadioButton ID="medie" runat="server" text="medie"/>
-        <asp:RadioButton ID="lunga" runat="server" text="lunga"/>
+        <asp:RadioButton ID="scurta" runat="server" text="scurta" GroupName="3"/>
+        <asp:RadioButton ID="medie" runat="server" text="medie" GroupName="3"/>
+        <asp:RadioButton ID="lunga" runat="server" text="lunga" GroupName="3"/>
 
         <br />
         <asp:Label ID="Label5" runat="server" Text="Ce suma aveti de gand sa cheltuiti?"></asp:Label>
 
         <br />
-        <asp:RadioButton ID="unu" runat="server" Text="200-300 euro" />
-        <asp:RadioButton ID="doi" runat="server" text="300-500 euro"/>
-        <asp:RadioButton ID="trei" runat="server" text="500-1000 euro"/>
-        <asp:RadioButton ID="patru" runat="server" text="peste 1000 euro"/>
+        <asp:RadioButton ID="unu" runat="server" Text="200-300 euro" GroupName="4"/>
+        <asp:RadioButton ID="doi" runat="server" text="300-500 euro" GroupName="4"/>
+        <asp:RadioButton ID="trei" runat="server" text="500-1000 euro" GroupName="4"/>
+        <asp:RadioButton ID="patru" runat="server" text="peste 1000 euro" GroupName="4"/>
         
         <br />
         <asp:Label ID="Label6" runat="server" Text="Ce nivel al hotelului va doriti?"></asp:Label>
 
         <br />
-        <asp:RadioButton ID="first" runat="server" Text="2 stele" />
-        <asp:RadioButton ID="second" runat="server" Text="3 stele" />
-        <asp:RadioButton ID="third" runat="server" text="4 stele"/>
-        <asp:RadioButton ID="fourth" runat="server" text="5 stele"/>
+        <asp:RadioButton ID="first" runat="server" Text="2 stele" GroupName="5"/>
+        <asp:RadioButton ID="second" runat="server" Text="3 stele" GroupName="5"/>
+        <asp:RadioButton ID="third" runat="server" text="4 stele" GroupName="5"/>
+        <asp:RadioButton ID="fourth" runat="server" text="5 stele" GroupName="5"/>
         <br />
-    <asp:Button ID="Button2" runat="server" Text="Salveaza" onclick="Button2_Click" />
+    <asp:Button ID="Salveaza" runat="server" Text="Salveaza" onclick="Button2_Click" />
 
 </asp:Content>

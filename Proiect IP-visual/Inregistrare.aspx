@@ -49,7 +49,8 @@
                     <asp:Button ID="Button1" runat="server" Text="Inregistrare" OnClick="Button1_Click" />
                 </td>
                 <td class="auto-style3">
-                    <input id="reset" type="reset" value="Resetare" /></td>
+                    <asp:Button ID="Reset_Button" runat="server" Text="Reset" 
+    OnClientClick="this.form.reset();return false;" /></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>

@@ -95,7 +95,7 @@
                         </asp:HyperLink>
                     </li>
                     <li>
-                        <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl='~/.aspx'> 
+                        <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl='~/Oferte.aspx'> 
                         Oferte
                         </asp:HyperLink>
                     </li>
