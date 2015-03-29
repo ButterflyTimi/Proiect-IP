@@ -29,8 +29,10 @@
                     <asp:TextBox ID="parolanouabox" runat="server" TextMode="Password"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:Button ID="parola" runat="server" Text="Schimba parola" />
+                    <asp:Button ID="parola" runat="server" Text="Schimba parola" 
+                        onclick="parola_Click" />
                 </td>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="parolavechebox" ErrorMessage="Parola necesara"></asp:RequiredFieldValidator>
             </tr>
     </table >
     <asp:Label ID="Label2" runat="server" Text="Ce tip de destinatii va intereseaza?"></asp:Label>

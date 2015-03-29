@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Collections;
+
 
 public partial class Inregistrare : System.Web.UI.Page
 {
@@ -56,7 +58,7 @@ public partial class Inregistrare : System.Web.UI.Page
             {
                 string insert = "insert into aspnet_Membership (UserId,username,Email,Password) values (@uid,@uname, @email, @parola)";
                 SqlCommand com = new SqlCommand(insert, con);
-                com.Parameters.AddWithValue("uid", newGUID.ToString());
+                com.Parameters.AddWithValue("@uid", newGUID.ToString());
                 com.Parameters.AddWithValue("@uname", user_name.Text);
                 com.Parameters.AddWithValue("@email", email.Text);
                 com.Parameters.AddWithValue("@parola", parola.Text);
@@ -64,6 +66,8 @@ public partial class Inregistrare : System.Web.UI.Page
                 com.ExecuteNonQuery();
                 Response.Redirect("Profil_utilizator.aspx");
                 Response.Write("Inregistrare reusita");
+
+                
             }
             else if (temp1 == 1)
             { 
