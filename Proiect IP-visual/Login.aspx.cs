@@ -29,7 +29,7 @@ public partial class Autentificare : System.Web.UI.Page
             string parola = parcom.ExecuteScalar().ToString().Replace(" ", "");
             if (parola == parolabox.Text)
             {
-                Session["new"] = username.Text;
+                Session["USER_ID"] = username.Text;
                 Response.Write("Parola corecta");
                 Response.Redirect("Home.aspx");
             }
