@@ -9,7 +9,19 @@ public partial class MasterPage : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["USER_ID"] != null)
+        {
+            LoginL.Text = Session["USER_ID"].ToString();
+            LoginL.Visible = true;
+            LoginHL.Visible = false;
+            LogoutHL.Visible = true;
+        }
+        else
+        {
+            LoginL.Visible = false;
+            LogoutHL.Visible = false;
+            LoginHL.Visible = true;
+        }
     }
     protected void Button1_Click(object sender, EventArgs e)
     {

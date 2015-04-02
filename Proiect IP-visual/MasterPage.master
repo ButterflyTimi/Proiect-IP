@@ -24,6 +24,12 @@
                 <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='~/Home.aspx'>        
 	                <img src="LogoIP-2.png" alt="carti"/>
                 </asp:HyperLink>
+                <asp:Label ID="LoginL" runat="server" Text="" style="background-color:red"></asp:Label>
+
+                <asp:HyperLink ID="LogoutHL" runat="server" NavigateUrl="~/Logout.aspx" style="background-color:red">LOGOUT</asp:HyperLink >
+
+                <asp:HyperLink ID="LoginHL" runat="server" NavigateUrl="~/Login.aspx" 
+                    ViewStateMode="Enabled" style="background-color:Red">LOGIN</asp:HyperLink>
             </div>
             <div class="header-login-search">
                 <div class="login-modals-wrapper">
@@ -35,6 +41,8 @@
                      </asp:LoginStatus>
                     </AnonymousTemplate>
                     <LoggedInTemplate>
+                    
+                        <asp:LoginName ID="LoginName1" runat="server" />
                     
                     <asp:LoginStatus ID="LoginStatus1" runat="server"></asp:LoginStatus>
                     </LoggedInTemplate>
