@@ -28,7 +28,17 @@
             <div class="header-login-search">
                 <div class="login-modals-wrapper">
                     <div class="login-modals">
+                    <asp:LoginView ID="LoginView2" runat="server">
+                    <AnonymousTemplate>
+                     
+                     <asp:LoginStatus ID="LoginStatus2" runat="server">
+                     </asp:LoginStatus>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
                     
+                    <asp:LoginStatus ID="LoginStatus1" runat="server"></asp:LoginStatus>
+                    </LoggedInTemplate>
+                    </asp:LoginView>
                     <!--<asp:LoginView ID="LoginView1" runat="server">
 
                         <AnonymousTemplate>
