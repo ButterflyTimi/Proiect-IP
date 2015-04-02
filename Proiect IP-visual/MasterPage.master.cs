@@ -14,10 +14,12 @@ public partial class MasterPage : System.Web.UI.MasterPage
             LoginL.Text = Session["USER_ID"].ToString();
             LoginL.Visible = true;
             LoginHL.Visible = false;
+            LogoutHL.Visible = true;
         }
         else
         {
             LoginL.Visible = false;
+            LogoutHL.Visible = false;
             LoginHL.Visible = true;
         }
     }
