@@ -38,7 +38,8 @@
                 <br />
             </div>
             <div>
-                <asp:Button ID="VeziOferta" CssClass="button" runat="server" Text="Vezi oferta" />
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/Detalii_oferta.aspx?q=" + Eval("id_sejur") %>' Text="Vezi Oferta">
+                </asp:HyperLink>
                 <br />
             </div>
 
@@ -50,6 +51,7 @@
     <asp:SqlDataSource ID="SqlDataSource" runat="server" 
         ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.MDF;Integrated Security=True;User Instance=True" 
         ProviderName="System.Data.SqlClient" 
+<<<<<<< HEAD
         SelectCommand="SELECT Sejur.nume, Sejur.descriere, Hotel.stele FROM Sejur CROSS JOIN Hotel"></asp:SqlDataSource>
         -->
     <div class="oferte-wrapper">
@@ -84,5 +86,8 @@
         
     SelectCommand="SELECT Sejur.id_sejur, Sejur.nume, Sejur.pret, Sejur.id_hotel, Sejur.imagine, Hotel.id_hotel AS idHotel, Hotel.nume AS HotelNume, Hotel.stele, Sejur.id_tipoferta, TipOferta.denumire, Sejur.descriere FROM Sejur INNER JOIN Hotel ON Sejur.id_hotel = Hotel.id_hotel INNER JOIN TipOferta ON Sejur.id_tipoferta = TipOferta.id_tipoferta"></asp:SqlDataSource>
 </div>
+=======
+        SelectCommand="SELECT Sejur.id_sejur, Sejur.nume, Sejur.descriere, Hotel.stele FROM Sejur CROSS JOIN Hotel"></asp:SqlDataSource>
+>>>>>>> 9a09d7aa6dc4da6e794808ade0673b36ae9bf8dd
 </asp:Content>
 
