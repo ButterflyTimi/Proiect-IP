@@ -24,48 +24,17 @@
                 <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='~/Home.aspx'>        
 	                <img src="LogoIP-2.png" alt="carti"/>
                 </asp:HyperLink>
-                <asp:Label ID="LoginL" runat="server" Text="" style="background-color:red"></asp:Label>
-
-                <asp:HyperLink ID="LogoutHL" runat="server" NavigateUrl="~/Logout.aspx" style="background-color:red">LOGOUT</asp:HyperLink >
-
-                <asp:HyperLink ID="LoginHL" runat="server" NavigateUrl="~/Login.aspx" 
-                    ViewStateMode="Enabled" style="background-color:Red">LOGIN</asp:HyperLink>
             </div>
             <div class="header-login-search">
                 <div class="login-modals-wrapper">
                     <div class="login-modals">
-                   
-                    <!--<asp:LoginView ID="LoginView1" runat="server">
+                            <asp:Label ID="LoginL" runat="server" Text=""></asp:Label>
 
-                        <AnonymousTemplate>
-                            <div class="login-buttons">
-                                <asp:Label ID="loginButton" runat="server" Text="Login" CssClass="loginAndRegister" data-toggle="modal" data-target="#loginModal"></asp:Label>
-                                <asp:Label ID="registrationButton" runat="server" Text="Inregistrare" CssClass="loginAndRegister"></asp:Label>
-                            </div>
-                        </AnonymousTemplate>
+                            <asp:HyperLink ID="LogoutHL" runat="server" NavigateUrl="~/Logout.aspx" CssClass="loginAndRegister">Logout</asp:HyperLink >
 
-                        <RoleGroups>
-                            <asp:RoleGroup Roles="Admin">
-                                <ContentTemplate>
-                                    <div class="login-buttons">
-                                        <span id="loggedInText"> Bine ai venit, 
-                                            <asp:LoginName ID="LoginName1" runat="server" />!
-                                            <asp:LoginStatus ID="LoginStatus" runat="server" CssClass="logOut"/>
-                                        </span>
-                                    </div>
-                                </ContentTemplate>
-                            </asp:RoleGroup>
-                        </RoleGroups>
+                            <asp:HyperLink ID="LoginHL" runat="server" NavigateUrl="~/Login.aspx" CssClass="loginAndRegister" ViewStateMode="Enabled">Login</asp:HyperLink>
 
-                        <LoggedInTemplate>
-                            <div class="login-buttons">
-                                <span id="loggedInText"> Bine ai venit, 
-                                    <asp:LoginName ID="LoginName1" runat="server" />!
-                                    <asp:LoginStatus ID="LoginStatus" runat="server" CssClass="logOut"/>
-                                </span>
-                            </div>
-                        </LoggedInTemplate>
-                    </asp:LoginView>-->
+                            <asp:HyperLink ID="SignUp" runat="server" NavigateUrl="~/Inregistrare.aspx" CssClass="loginAndRegister" ViewStateMode="Enabled">Inregistrare</asp:HyperLink>
 
                     </div>
                 </div>
@@ -106,12 +75,12 @@
                         </asp:HyperLink>
                     </li>
                     <li>
-                        <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl='~/.aspx'> 
+                        <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl='~/DespreNoi.aspx'> 
                         Despre noi
                         </asp:HyperLink>
                     </li>
                     <li>
-                        <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl='~/.aspx'> 
+                        <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl='~/Contact.aspx'> 
                         Contact
                         </asp:HyperLink>
                     </li>
@@ -120,7 +89,7 @@
         </div>
     </nav>
 
-    <div>
+    <div class="container-fluid">
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>

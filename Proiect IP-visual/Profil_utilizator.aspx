@@ -3,14 +3,14 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
-        <table class="auto-style1">
+        <table>
             <tr>
-                <td class="auto-style11" style="text-align: left">UserName Vechi:</td>
-                <td style="text-align: left" class="auto-style8">
+                <td>UserName Vechi:</td>
+                <td>
                     <asp:TextBox ID="usernamevechibox" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style11" style="text-align: left">UserName Nou:</td>
-                <td style="text-align: left" class="auto-style8">
+                <td>UserName Nou:</td>
+                <td>
                     <asp:TextBox ID="usernamenoubox" runat="server"></asp:TextBox>
                 </td>
                 <td>
@@ -20,12 +20,12 @@
                 
             </tr>
             <tr>
-                <td class="auto-style12">Parola veche</td>
-                <td class="auto-style6">
+                <td>Parola veche</td>
+                <td>
                     <asp:TextBox ID="parolavechebox" runat="server" TextMode="Password"></asp:TextBox>
                 </td>
-                <td class="auto-style12">Parola noua</td>
-                <td class="auto-style6">
+                <td>Parola noua</td>
+                <td>
                     <asp:TextBox ID="parolanouabox" runat="server" TextMode="Password"></asp:TextBox>
                 </td>
                 <td>

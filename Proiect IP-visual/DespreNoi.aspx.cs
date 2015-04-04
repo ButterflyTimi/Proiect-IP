@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class style_footer : System.Web.UI.Page
+public partial class DespreNoi : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
