@@ -37,7 +37,8 @@
                 <br />
             </div>
             <div>
-                <asp:Button ID="VeziOferta" CssClass="button" runat="server" Text="Vezi oferta" />
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/Detalii_oferta.aspx?q=" + Eval("id_sejur") %>' Text="Vezi Oferta">
+                </asp:HyperLink>
                 <br />
             </div>
 
@@ -49,6 +50,6 @@
     <asp:SqlDataSource ID="SqlDataSource" runat="server" 
         ConnectionString="Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.MDF;Integrated Security=True;User Instance=True" 
         ProviderName="System.Data.SqlClient" 
-        SelectCommand="SELECT Sejur.nume, Sejur.descriere, Hotel.stele FROM Sejur CROSS JOIN Hotel"></asp:SqlDataSource>
+        SelectCommand="SELECT Sejur.id_sejur, Sejur.nume, Sejur.descriere, Hotel.stele FROM Sejur CROSS JOIN Hotel"></asp:SqlDataSource>
 </asp:Content>
 
