@@ -2,44 +2,40 @@
 
 
     <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div style="text-align: center">
-    
-        <asp:Label ID="Label1" runat="server" Text="Autentificare" style="text-align: justify"></asp:Label>
-    
-        <table class="auto-style1">
-            <tr>
-                <td class="auto-style11" style="text-align: left">UserName:</td>
-                <td style="text-align: left" class="auto-style8">
-                    <asp:TextBox ID="username" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style9">
-                    <asp:RequiredFieldValidator ID="usernamevalidator" runat="server" ControlToValidate="username" ErrorMessage="Camp obligatoriu"></asp:RequiredFieldValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style12">Parola</td>
-                <td class="auto-style6">
-                    <asp:TextBox ID="parolabox" runat="server" TextMode="Password"></asp:TextBox>
-                </td>
-                <td class="auto-style2">
-                    <asp:RequiredFieldValidator ID="parolavalidator" runat="server" ControlToValidate="parolabox" ErrorMessage="Camp obligatoriu"></asp:RequiredFieldValidator>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style13">
-                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Inregistrare.aspx">Inregistrare</asp:HyperLink>
-                </td>
-                <td class="auto-style5">
-                    <asp:Button ID="login" runat="server" OnClick="login_Click" Text="Login" />
-                </td>
-                <td class="auto-style10">&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style13">&nbsp;</td>
-                <td class="auto-style5">&nbsp;</td>
-                <td class="auto-style10">&nbsp;</td>
-            </tr>
-        </table>
-    
+    <div class="row">
+    <div class="sign-in-form">
+        <h2><i class="fa fa-sign-in"></i> Conecteaza-te</h2>
+        <div class="form-horizontal">
+         <div class="form-group">
+            <label class="col-sm-2 control-label">Nume utilizator:</label>
+            <div class="col-sm-9 input-tb">
+               <asp:TextBox ID="username" CssClass="form-control" runat="server"></asp:TextBox>
+            </div>
+            <div class="col-sm-1 validators">
+                <asp:RequiredFieldValidator ID="usernamevalidator" runat="server" ControlToValidate="username" ErrorMessage="*"></asp:RequiredFieldValidator>
+            </div>
+         </div>
+
+         <div class="form-group">
+            <label class="col-sm-2 control-label">Parola:</label>
+            <div class="col-sm-9 input-tb">
+               <asp:TextBox ID="parolabox" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
+            </div>
+            <div class="col-sm-1 validators">
+                <asp:RequiredFieldValidator ID="parolavalidator" runat="server" ControlToValidate="parolabox" ErrorMessage="*"></asp:RequiredFieldValidator>
+            </div>
+         </div>
+
+         <div class="form-group">
+            <div class="col-sm-2">
+                Nu ai cont? 
+                <asp:HyperLink ID="HyperLink2" runat="server" CssClass="inregistreazate" NavigateUrl="~/Inregistrare.aspx">Inregistreaza-te</asp:HyperLink>
+            </div>
+            <div class="col-sm-10">
+                <asp:Button ID="login" runat="server" OnClick="login_Click" Text="Login" CssClass="btn primary-button" />
+            </div>
+          </div>
+          </div>
+        </div>
     </div>
     </asp:Content>

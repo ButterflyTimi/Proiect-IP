@@ -1,0 +1,38 @@
+﻿.sign-in-form, .sign-up-form {
+	.make-sm-column(8);
+	.make-sm-column-offset(2);
+	border: 1px solid @brand-primary-inverse-lighter;
+	padding: 0px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	h2 {
+		text-align: center;
+		background-color: @brand-primary-inverse-lighter;
+		color: white;
+		margin-top: 0;
+		padding: 5px 0px;
+	}
+	.form-horizontal {
+		margin: 30px;
+		.input-tb {
+			padding-right: 0;
+		}
+		.validators {
+			padding-left: 0;
+			font-size: 20px;
+			color: red;
+			&.small {
+				font-size: 12px;
+			}
+		}
+		.inregistreazate {
+			font-weight: bold;
+		}
+	}
+}
+
+.sign-up-form {
+	.form-horizontal {
+		margin-bottom: 10px;
+	}
+}
