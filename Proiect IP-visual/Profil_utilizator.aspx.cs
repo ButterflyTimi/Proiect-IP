@@ -34,11 +34,7 @@ public partial class Profil_utilizator : System.Web.UI.Page
             test += 1;
         }
 
-        if (Montan.Checked)
-        {
-            rd2 = Montan.Text;
-        }
-        else if (Sportiv.Checked)
+         if (Sportiv.Checked)
         {
             rd2 = Sportiv.Text;
         }

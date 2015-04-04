@@ -45,7 +45,6 @@
         <asp:Label ID="Label3" runat="server" Text="Ce forma de turism va intereseaza?"></asp:Label>
 
         <br />
-        <asp:RadioButton ID="Montan" runat="server" text="Montan" GroupName="2"/>
         <asp:RadioButton ID="Sportiv" runat="server" text="Sportiv" GroupName="2"/>
         <asp:RadioButton ID="Recreere" runat="server" text="Recreere" GroupName="2"/>
         <asp:RadioButton ID="Cultural" runat="server" text="Cultural" GroupName="2"/>
@@ -55,18 +54,19 @@
         <asp:Label ID="Label4" runat="server" Text="Ce durata de sejur preferati?"></asp:Label>
 
         <br />
-        <asp:RadioButton ID="scurta" runat="server" text="scurta" GroupName="3"/>
-        <asp:RadioButton ID="medie" runat="server" text="medie" GroupName="3"/>
-        <asp:RadioButton ID="lunga" runat="server" text="lunga" GroupName="3"/>
+        <asp:RadioButton ID="scurta" runat="server" text="2-3 zile" GroupName="3"/>
+        <asp:RadioButton ID="medie" runat="server" text="4-5 zile" GroupName="3"/>
+        <asp:RadioButton ID="lunga" runat="server" text="6-7 zile" GroupName="3"/>
 
         <br />
         <asp:Label ID="Label5" runat="server" Text="Ce suma aveti de gand sa cheltuiti?"></asp:Label>
 
         <br />
-        <asp:RadioButton ID="unu" runat="server" Text="200-300 euro" GroupName="4"/>
-        <asp:RadioButton ID="doi" runat="server" text="300-500 euro" GroupName="4"/>
-        <asp:RadioButton ID="trei" runat="server" text="500-1000 euro" GroupName="4"/>
-        <asp:RadioButton ID="patru" runat="server" text="peste 1000 euro" GroupName="4"/>
+        <asp:RadioButton ID="unu" runat="server" text="sub 100 euro" GroupName="4"/>
+        <asp:RadioButton ID="doi" runat="server" Text="100-200 euro" GroupName="4"/>
+        <asp:RadioButton ID="trei" runat="server" text="200-300 euro" GroupName="4"/>
+        <asp:RadioButton ID="patru" runat="server" text="peste 300 euro" GroupName="4"/>
+        
         
         <br />
         <asp:Label ID="Label6" runat="server" Text="Ce nivel al hotelului va doriti?"></asp:Label>
