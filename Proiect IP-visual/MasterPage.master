@@ -89,7 +89,7 @@
         </div>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container">
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         
         </asp:ContentPlaceHolder>
