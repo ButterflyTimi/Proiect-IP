@@ -8,8 +8,8 @@
             <h2><i class="fa fa-user-plus"></i> Inregistreaza-te</h2>
         <div class="form-horizontal">
              <div class="form-group">
-                <label class="col-sm-2 control-label">Nume utilizator:</label>
-                <div class="col-sm-9 input-tb">
+                <label class="col-sm-3 control-label">Nume utilizator:</label>
+                <div class="col-sm-8 input-tb">
                     <asp:TextBox ID="user_name" runat="server"  CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-sm-1 validators">
@@ -18,8 +18,8 @@
              </div>
 
              <div class="form-group">
-                <label class="col-sm-2 control-label">Email:</label>
-                <div class="col-sm-9 input-tb">
+                <label class="col-sm-3 control-label">Email:</label>
+                <div class="col-sm-8 input-tb">
                     <asp:TextBox ID="email" runat="server"  CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-sm-1 validators">
@@ -28,8 +28,8 @@
              </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">Parola:</label>
-                <div class="col-sm-9 input-tb">
+                <label class="col-sm-3 control-label">Parola:</label>
+                <div class="col-sm-8 input-tb">
                     <asp:TextBox ID="parola" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-sm-1 validators">
@@ -38,8 +38,8 @@
              </div>
 
              <div class="form-group">
-                <label class="col-sm-2 control-label">Confirma parola:</label>
-                <div class="col-sm-9 input-tb">
+                <label class="col-sm-3 control-label">Confirma parola:</label>
+                <div class="col-sm-8 input-tb">
                     <asp:TextBox ID="cparola" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
                 </div>
                 <div class="col-sm-1 validators">
@@ -48,10 +48,10 @@
              </div>
 
             <div class="form-group">
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <asp:Button ID="Reset_Button" runat="server" Text="Reset" CssClass="btn primary-button" OnClientClick="this.form.reset();return false;" />
                 </div>
-                <div class="col-sm-10">
+                <div class="col-sm-9">
                     <asp:Button ID="Button1" runat="server" Text="Inregistrare" CssClass="btn primary-button" OnClick="Button1_Click" />
                 </div>
           </div>
@@ -63,7 +63,8 @@
                     <asp:CompareValidator ID="CompareValidator2" runat="server" ControlToCompare="parola" ControlToValidate="cparola" ErrorMessage="Parolele nu corespund"></asp:CompareValidator>
                 </div>
           </div>
-        </div>
+          <asp:Label ID="ResponseLogin" runat="server" Text="" CssClass="validators small"></asp:Label>
+      </div>
         
                         
     </div>
