@@ -13,7 +13,26 @@ public partial class Profil_utilizator : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!Page.IsPostBack)
+        {
+            string q = Request.Params["q"];
+            if (q != null)
+            {
+                try
+                {
+                    q = Server.UrlDecode(q);
+                    usernamevechibox.Text = q;
 
+                }
+                catch (Exception err)
+                {
+                }
+            }
+            else
+            {
+                Response.Redirect("~/Inregistrare.aspx");
+            }
+        }
     }
     protected void Button2_Click(object sender, EventArgs e)
     {

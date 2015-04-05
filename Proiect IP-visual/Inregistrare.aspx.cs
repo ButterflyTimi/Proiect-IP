@@ -64,7 +64,9 @@ public partial class Inregistrare : System.Web.UI.Page
                 com.Parameters.AddWithValue("@parola", parola.Text);
 
                 com.ExecuteNonQuery();
-                Response.Redirect("Profil_utilizator.aspx");
+                Session["USER_ID"] = user_name.Text;
+                string URL ="Profil_utilizator.aspx?q="+user_name.Text;
+                Response.Redirect(URL);
                 Response.Write("Inregistrare reusita");
 
                 

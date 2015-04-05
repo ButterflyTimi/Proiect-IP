@@ -29,7 +29,7 @@
          <div class="form-group">
             <div class="col-sm-2">
                 Nu ai cont? 
-                <asp:HyperLink ID="HyperLink2" runat="server" CssClass="inregistreazate" NavigateUrl="~/Inregistrare.aspx">Inregistreaza-te</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink2" runat="server" CssClass="inregistreaza-te" NavigateUrl="~/Inregistrare.aspx">Inregistreaza-te</asp:HyperLink>
             </div>
             <div class="col-sm-10">
                 <asp:Button ID="login" runat="server" OnClick="login_Click" Text="Login" CssClass="btn primary-button" />
