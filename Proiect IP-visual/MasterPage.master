@@ -28,8 +28,9 @@
             <div class="header-login-search">
                 <div class="login-modals-wrapper">
                     <div class="login-modals">
-                            <asp:Label ID="LoginL" runat="server" Text=""></asp:Label>
-
+                            <asp:HyperLink ID="LinkProfil" runat="server" NavigateUrl="" CssClass="loginAndRegister">
+                                <asp:Label ID="LoginL" runat="server" Text=""></asp:Label>
+                            </asp:HyperLink>
                             <asp:HyperLink ID="LogoutHL" runat="server" NavigateUrl="~/Logout.aspx" CssClass="loginAndRegister">Logout</asp:HyperLink >
 
                             <asp:HyperLink ID="LoginHL" runat="server" NavigateUrl="~/Login.aspx" CssClass="loginAndRegister" ViewStateMode="Enabled">Login</asp:HyperLink>

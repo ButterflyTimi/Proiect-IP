@@ -16,6 +16,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             LoginHL.Visible = false;
             SignUp.Visible = false;
             LogoutHL.Visible = true;
+            LinkProfil.NavigateUrl = "~/Profil_utilizator.aspx?q=" + Session["USER_ID"].ToString();
         }
         else
         {

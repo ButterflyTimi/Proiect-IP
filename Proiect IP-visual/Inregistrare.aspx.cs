@@ -17,6 +17,11 @@ public partial class Inregistrare : System.Web.UI.Page
     string verif_user;
     protected void Page_Load(object sender, EventArgs e)
     {
+        ResponseLogin.Visible = false;
+        if (Session["USER_ID"] != null)
+        {
+            Response.Redirect("Home.aspx");
+        }
         if (IsPostBack)
         {
 
@@ -72,12 +77,16 @@ public partial class Inregistrare : System.Web.UI.Page
                 
             }
             else if (temp1 == 1)
-            { 
-                Response.Write("Username folosit"); 
+            {
+                ResponseLogin.Visible = true;
+                ResponseLogin.Text = "Username folosit!";
+                //Response.Write("Username folosit"); 
             }
             else
             {
-                Response.Write("Exista deja un cont pe acest email");
+                ResponseLogin.Visible = true;
+                ResponseLogin.Text = "Exista deja un cont pe acest email!";
+                //Response.Write("Exista deja un cont pe acest email");
             }
             con.Close();
         }

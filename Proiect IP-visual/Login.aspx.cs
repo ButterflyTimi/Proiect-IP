@@ -11,7 +11,7 @@ public partial class Autentificare : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        ResponseLogin.Visible = false;
     }
     protected void login_Click(object sender, EventArgs e)
     {
@@ -30,18 +30,22 @@ public partial class Autentificare : System.Web.UI.Page
             if (parola == parolabox.Text)
             {
                 Session["USER_ID"] = username.Text;
-                Response.Write("Parola corecta");
+                //Response.Write("Parola corecta");
                 Response.Redirect("Home.aspx");
             }
             else
             {
-                Response.Write("Parola incorecta");
+                ResponseLogin.Visible = true;
+                ResponseLogin.Text = "Parola incorecta!";
+                //Response.Write("Parola incorecta");
             }
             con.Close();
         }
         else
         {
-            Response.Write("Username inexistent");
+            ResponseLogin.Visible = true;
+            ResponseLogin.Text = "Username inexistent!";
+            //Response.Write("Username inexistent");
         }
 
 
