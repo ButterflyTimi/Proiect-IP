@@ -3,10 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
+    <div class="row">
+    <div class="filtre-wrapper">
     <asp:Panel ID="Panel1" CssClass="filtrarePanel" runat="server">
         <h4>Filtreaza in functie de:</h4>
-        <div>
+        <div class="filtre">
             <h5>Numarul de stele al hotelului</h5>
             <asp:CheckBoxList ID="CheckBoxList1" runat="server" AutoPostBack="true" EnableViewState="true" 
                 onselectedindexchanged="CheckBoxList1_SelectedIndexChanged">
@@ -18,7 +19,7 @@
 
             </asp:CheckBoxList>
         </div>
-        <div>
+        <div  class="filtre">
             <h5>Conditiile hotelului</h5>
             <asp:CheckBoxList ID="CheckBoxList2" runat="server" AutoPostBack="true" EnableViewState="true" 
                 onselectedindexchanged="CheckBoxList2_SelectedIndexChanged">
@@ -41,6 +42,8 @@
      <asp:Button ID="AnulareFiltre" CssClass="btn primary-button" runat="server" 
             Text="Anulare filtre" onclick="AnulareFiltre_Click"/>
     
+    </div>
+
     <div class="oferte-wrapper">
     <asp:DataList ID="DataList2" runat="server" DataSourceID="SqlDataSource1"
         RepeatColumns="3" RepeatDirection="Horizontal" Width="100%">
@@ -54,7 +57,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-12 text-center">
                 <asp:HyperLink ID="HyperLink1" runat="server" CssClass="btn primary-button" NavigateUrl='<%# "~/Detalii_oferta.aspx?q=" + Eval("id_sejur") %>' Text="Vezi Oferta">
                 </asp:HyperLink>
             </div>
@@ -67,5 +70,7 @@
         
     SelectCommand="SELECT Sejur.id_sejur, Sejur.nume, Sejur.pret, Sejur.id_hotel, Sejur.imagine, Hotel.id_hotel AS idHotel, Hotel.nume AS HotelNume, Hotel.stele, Sejur.id_tipoferta, TipOferta.denumire, Sejur.descriere FROM Sejur INNER JOIN Hotel ON Sejur.id_hotel = Hotel.id_hotel INNER JOIN TipOferta ON Sejur.id_tipoferta = TipOferta.id_tipoferta where 1=1"></asp:SqlDataSource>
 </div>
+    
+    </div>
 </asp:Content>
 

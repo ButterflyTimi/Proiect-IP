@@ -13,6 +13,7 @@ public partial class Profil_utilizator : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        message.Visible = false;
         if (!Page.IsPostBack)
         {
             string q = Request.Params["q"];
@@ -272,11 +273,15 @@ public partial class Profil_utilizator : System.Web.UI.Page
 
         if (test == 4)
         {
-            Response.Write("Completeaza toate campurile");
+            message.Visible = true;
+            message.InnerHtml = "Completeaza toate campurile";
+            //Response.Write("Completeaza toate campurile");
         }
         else if (nume == null)
         {
-            Response.Write("Introdu username-ul folosit");
+            //Response.Write("Introdu username-ul folosit");
+            message.Visible = true;
+            message.InnerHtml = "Introdu username-ul folosit";
         }
         else
         {
@@ -308,7 +313,9 @@ public partial class Profil_utilizator : System.Web.UI.Page
         con.Close();
         if (temp != 1)
         {
-            Response.Write("Nu exista acest username");
+            message.Visible = true;
+            message.InnerHtml = "Nu exista acest username";
+            //Response.Write("Nu exista acest username");
         }
         else
         {
@@ -320,7 +327,9 @@ public partial class Profil_utilizator : System.Web.UI.Page
             con.Close();
             if (temp2 == 1)
             {
-                Response.Write("Exista deja acest username. Alege te rog altul!");
+                //Response.Write("Exista deja acest username. Alege te rog altul!");
+                message.Visible = true;
+                message.InnerHtml = "Exista deja acest username. Alege te rog altul!";
             }
             else
             {
@@ -331,7 +340,9 @@ public partial class Profil_utilizator : System.Web.UI.Page
                 com2.Parameters.AddWithValue("@unamenou", usernamenoubox.Text);
 
                 com2.ExecuteNonQuery();
-                Response.Write("Update reusit");
+                //Response.Write("Actualizare realizata cu succes!");
+                message.Visible = true;
+                message.InnerHtml = "Actualizare realizata cu succes!";
                 con.Close();
 
             }
@@ -349,7 +360,9 @@ public partial class Profil_utilizator : System.Web.UI.Page
         con.Close();
         if (temp != 1)
         {
-            Response.Write("Nu exista acest username");
+            //Response.Write("Nu exista acest nume de utilizator");
+            message.Visible = true;
+            message.InnerHtml = "Nu exista acest nume de utilizator";
         }
         else
         {
@@ -361,7 +374,9 @@ public partial class Profil_utilizator : System.Web.UI.Page
             com2.Parameters.AddWithValue("@unamevechi", usernamevechibox.Text);
 
             com2.ExecuteNonQuery();
-            Response.Write("Update reusit");
+            //Response.Write("Actualizare realizata cu succes!");
+            message.Visible = true;
+            message.InnerHtml = "Actualizare realizata cu succes!";
             con.Close();
 
         }
