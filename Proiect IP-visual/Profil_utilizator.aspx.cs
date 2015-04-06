@@ -39,20 +39,6 @@ public partial class Profil_utilizator : System.Web.UI.Page
         string rd1=null, rd2=null, rd3=null, rd4=null, rd5=null;
         int test = 0;
         string nume = usernamevechibox.Text;
-        if (Munte.Checked)
-        {
-            rd1 = Munte.Text;
-        }
-        else if (Mare.Checked)
-        {
-            rd1 = Mare.Text;
-        }
-        else
-        {
-
-            test += 1;
-        }
-
          if (Sportiv.Checked)
         {
             rd2 = Sportiv.Text;
@@ -136,7 +122,7 @@ public partial class Profil_utilizator : System.Web.UI.Page
             test += 1;
         }
 
-        if (test == 5)
+        if (test == 4)
         {
             Response.Write("Completeaza toate campurile");
         }
@@ -149,10 +135,9 @@ public partial class Profil_utilizator : System.Web.UI.Page
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             con.Open();
 
-            string insert = "update aspnet_Membership set Tip_destinatie=@dest, Forma_turism=@turism, Durata_sejur=@dsejur, Suma_sejur=@ssejur, Nivel_hotel=@hotel where username='"+usernamevechibox.Text+"'";
+            string insert = "update aspnet_Membership set Forma_turism=@turism, Durata_sejur=@dsejur, Suma_sejur=@ssejur, Nivel_hotel=@hotel where username='"+usernamevechibox.Text+"'";
             SqlCommand com = new SqlCommand(insert,con);
 
-            com.Parameters.AddWithValue("@dest", rd1);
             com.Parameters.AddWithValue("@turism", rd2);
             com.Parameters.AddWithValue("@dsejur", rd3);
             com.Parameters.AddWithValue("@ssejur", rd4);
