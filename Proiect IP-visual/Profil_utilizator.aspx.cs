@@ -22,8 +22,153 @@ public partial class Profil_utilizator : System.Web.UI.Page
                 {
                     q = Server.UrlDecode(q);
                     usernamevechibox.Text = q;
+                  
 
+                    string temp = string.Empty;
+        string cmdText = "select Forma_turism from aspnet_Membership where username='" + usernamevechibox.Text + "'";
+        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+        {
+            con.Open();
+            using (SqlCommand cmd = new SqlCommand(cmdText, con))
+            {
+                
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        temp = reader.GetValue(0).ToString(); 
+                    }
                 }
+            }
+            if (temp.Equals("Sportiv"))
+            {
+                Sportiv.Checked = true;
+            }
+            else if (temp.Equals("Recreere"))
+            {
+                Recreere.Checked = true;
+            }
+            else if (temp.Equals("Cultural"))
+            {
+                Cultural.Checked = true;
+            }
+            else
+            {
+                Ingrijire_Sanatate.Checked = true;
+            }
+            
+            con.Close();
+        }
+            string temp2 = string.Empty;
+        string cmdText2 = "select Durata_sejur from aspnet_Membership where username='" + usernamevechibox.Text + "'";
+        using (SqlConnection con2 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+        {
+            con2.Open();
+            using (SqlCommand cmd = new SqlCommand(cmdText2, con2))
+            {
+                
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        temp2 = reader.GetValue(0).ToString(); 
+                    }
+                }
+            }
+        
+                    if (temp2 == "2-3 zile")
+                    {
+                        scurta.Checked = true;
+                    }
+                    else if (temp2 == "4-5 zile")
+                    {
+                        medie.Checked = true;
+                    }
+                    else
+                    {
+                        lunga.Checked = true;
+                    }
+            
+            con2.Close();
+        }
+            string temp3 = string.Empty;
+        string cmdText3 = "select Suma_sejur from aspnet_Membership where username='" + usernamevechibox.Text + "'";
+        using (SqlConnection con3 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+        {
+            con3.Open();
+            using (SqlCommand cmd = new SqlCommand(cmdText3, con3))
+            {
+                
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        temp3 = reader.GetValue(0).ToString(); 
+                    }
+                }
+            }
+           
+                    if (temp3 == "sub 100 euro")
+                    {
+                        unu.Checked = true;
+                    }
+                    else if (temp3 == "100-200 euro")
+                    {
+                        doi.Checked = true;
+                    }
+                    else if (temp3 == "200-300 euro")
+                    {
+                        trei.Checked = true;
+                    }
+                    else
+                    {
+                        patru.Checked=true;
+                    }
+
+            
+            con3.Close();
+
+            string temp4 = string.Empty;
+        string cmdText4 = "select Nivel_hotel from aspnet_Membership where username='" + usernamevechibox.Text + "'";
+        using (SqlConnection con4 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+        {
+            con4.Open();
+            using (SqlCommand cmd = new SqlCommand(cmdText4, con4))
+            {
+                
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        temp4 = reader.GetValue(0).ToString(); 
+                    }
+                }
+            }
+        
+           
+                    if (temp4=="2 stele")
+                    {
+                        first.Checked = true;
+                    }
+                    else if (temp4== "3 stele")
+                    {
+                        second.Checked = true;
+                    }
+                    else if (temp4== "4 stele")
+                    {
+                        third.Checked = true;
+                    }
+                    else
+                    {
+                        fourth.Checked = true;
+                    }
+
+            
+            con4.Close();
+        }
+        }
+                                          
+               }
                 catch (Exception err)
                 {
                 }
@@ -34,9 +179,12 @@ public partial class Profil_utilizator : System.Web.UI.Page
             }
         }
     }
+    
+    
+     
     protected void Button2_Click(object sender, EventArgs e)
     {
-        string rd1=null, rd2=null, rd3=null, rd4=null, rd5=null;
+        string rd2=null, rd3=null, rd4=null, rd5=null;
         int test = 0;
         string nume = usernamevechibox.Text;
          if (Sportiv.Checked)
