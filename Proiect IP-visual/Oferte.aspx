@@ -3,18 +3,38 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<h4>Filtreaza in functie de numarul de stele al hotelului</h4>
-    <asp:Panel ID="Panel1" CssClass="filtrarePanel" runat="server">
-        
-        <asp:CheckBoxList ID="CheckBoxList1" runat="server" AutoPostBack="true" EnableViewState="true" 
-            onselectedindexchanged="CheckBoxList1_SelectedIndexChanged">
-            <asp:ListItem Value="1">O stea</asp:ListItem>
-            <asp:ListItem Value="2">Doua stele</asp:ListItem>
-            <asp:ListItem Value="3">Trei stele</asp:ListItem>
-            <asp:ListItem Value="4">Patru stele</asp:ListItem>
-            <asp:ListItem Value="5">Cinci stele</asp:ListItem>
 
-        </asp:CheckBoxList>
+    <asp:Panel ID="Panel1" CssClass="filtrarePanel" runat="server">
+        <h4>Filtreaza in functie de:</h4>
+        <div>
+            <h5>Numarul de stele al hotelului</h5>
+            <asp:CheckBoxList ID="CheckBoxList1" runat="server" AutoPostBack="true" EnableViewState="true" 
+                onselectedindexchanged="CheckBoxList1_SelectedIndexChanged">
+                <asp:ListItem Value="1">O stea</asp:ListItem>
+                <asp:ListItem Value="2">Doua stele</asp:ListItem>
+                <asp:ListItem Value="3">Trei stele</asp:ListItem>
+                <asp:ListItem Value="4">Patru stele</asp:ListItem>
+                <asp:ListItem Value="5">Cinci stele</asp:ListItem>
+
+            </asp:CheckBoxList>
+        </div>
+        <div>
+            <h5>Conditiile hotelului</h5>
+            <asp:CheckBoxList ID="CheckBoxList2" runat="server" AutoPostBack="true" EnableViewState="true" 
+                onselectedindexchanged="CheckBoxList2_SelectedIndexChanged">
+                <asp:ListItem Value="restaurant">Restaurant</asp:ListItem>
+                <asp:ListItem Value="bar">Bar</asp:ListItem>
+                <asp:ListItem Value="piscina">Piscina</asp:ListItem>
+                <asp:ListItem Value="loc_joaca">Loc de joaca pentru copii</asp:ListItem>
+                <asp:ListItem Value="wifi">Internet wireless</asp:ListItem>
+                <asp:ListItem Value="minibar">Minibar camera</asp:ListItem>
+                <asp:ListItem Value="televizor">Televizor camera</asp:ListItem>
+                <asp:ListItem Value="telefon">Telefon camera</asp:ListItem>
+                <asp:ListItem Value="transport">Trasnport aeroport-hotel</asp:ListItem>
+                <asp:ListItem Value="ingrijire_medicala">Facilitati ingrijire medicala</asp:ListItem>
+
+            </asp:CheckBoxList>
+        </div>
 
     </asp:Panel>
 
