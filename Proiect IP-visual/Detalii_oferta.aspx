@@ -12,7 +12,14 @@
 
         <div class="row">
             <div class="imagine_sejur">
-                <div class="imagine" style="background: url('<%# "pozeSejururi/" + Eval("imagine") %>')"></div>
+                <div class="imagine" style="background: url('<%# "pozeSejururi/" + Eval("imagine") %>')">
+                </div>
+            </div>
+            
+            <div id="rez" class="rezervare" visible="false" >
+                <asp:Button ID="rezerva" runat="server" Text="Rezerva" />
+                <p>Numar locuri disponibile</p>
+                <asp:TextBox ID="nr_loc" runat="server"></asp:TextBox>
             </div>
 
             <div class="detalii_sejur">
@@ -24,13 +31,17 @@
             <asp:Image ID="imgStatus" runat="server" ImageUrl='<%# Eval("stele", "star{0}.png").ToString() %>' Width="20%" Height="5%"/>
             </div>
             <div class="pret">
-                <h4>Pret:</h4> 
+                <h4>Pret/Persoana:</h4> 
                 <asp:Label ID="pretLabel" runat="server" Text='<%# Eval("pret","{0} euro") %>'/>
             </div>
             
             <div class="descriere">
                 <h4>Descriere:</h4> 
                    <asp:Label ID="descriereLabel" runat="server" Text='<%# Eval("descriere") %>'/>
+            </div>
+            <div class="locuri_disp">
+                <h4>Locuri disponibile:</h4> 
+                   <asp:Label ID="locuriLabel" runat="server" Text='<%# Eval("locuri_disp") %>'/>
             </div>
              <div class="disponibilitate">
                 <h4>Disponibilitate:</h4> 
@@ -111,4 +122,3 @@
        
        
 </asp:Content>
-
