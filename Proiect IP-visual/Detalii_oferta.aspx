@@ -9,79 +9,102 @@
        <asp:DataList ID="DataList1" runat="server" DataKeyField="IdSejur" 
         DataSourceID="SqlDataSource1">
         <ItemTemplate>
-            <div class="numeSejur">
+
+        <div class="row">
+            <div class="imagine_sejur">
+                <div class="imagine" style="background: url('<%# "pozeSejururi/" + Eval("imagine") %>')"></div>
+            </div>
+
+            <div class="detalii_sejur">
                 <h3>
                     <asp:Label ID="numeLabel" runat="server" Text='<%# Eval("nume") %>' />
                 </h3>
-            </div>
-            <div class="stele">
+                <div class="stele">
             
             <asp:Image ID="imgStatus" runat="server" ImageUrl='<%# Eval("stele", "star{0}.png").ToString() %>' Width="20%" Height="5%"/>
             </div>
             <div class="pret">
-            Pret: 
-            <asp:Label ID="pretLabel" runat="server" Text='<%# Eval("pret","{0} euro") %>'/>
+                <h4>Pret:</h4> 
+                <asp:Label ID="pretLabel" runat="server" Text='<%# Eval("pret","{0} euro") %>'/>
             </div>
             
             <div class="descriere">
+                <h4>Descriere:</h4> 
                    <asp:Label ID="descriereLabel" runat="server" Text='<%# Eval("descriere") %>'/>
             </div>
              <div class="disponibilitate">
-                   <asp:Label ID="disponibilitate1Label" runat="server" Text='<%# Eval("data_in","Disponibilitate:{0}")%>'/>
-                   <asp:Label ID="disponibilitate2Label" runat="server" Text='<%#Eval("data_out","-{0}") %>' />
+                <h4>Disponibilitate:</h4> 
+                   <asp:Label ID="disponibilitate1Label" runat="server" Text='<%# Eval("data_in")%>'/>
+                    - 
+                   <asp:Label ID="disponibilitate2Label" runat="server" Text='<%#Eval("data_out") %>' />
             </div>
+
             <div class="checkbox">
-            <table width="400px">
-            <thead>
-            <tr><p>Conditii:</p>
-            </tr>
-            </thead>
+                <h4>Conditii:</h4> 
+
+
+            <table>
             <tbody>
             <tr>
+            <td><asp:CheckBox ID="CheckBox1" Enabled="False" runat="server" Checked='<%#Convert.ToBoolean(Eval("restaurant")) %>' /></td>
+            
             <td>Restaurant</td>
-            <td><asp:CheckBox ID="CheckBox1" runat="server" Checked='<%#Convert.ToBoolean(Eval("restaurant")) %>' /></td>
             </tr>
             <tr>
+            <td><asp:CheckBox ID="CheckBox2" Enabled="False" runat="server" Checked='<%#Convert.ToBoolean(Eval("bar")) %>' /></td>
+            
             <td>Bar</td>
-            <td><asp:CheckBox ID="CheckBox2" runat="server" Checked='<%#Convert.ToBoolean(Eval("bar")) %>' /></td>
             </tr>
             <tr>
+            <td><asp:CheckBox ID="CheckBox3" Enabled="False" runat="server" Checked='<%#Convert.ToBoolean(Eval("piscina")) %>' /></td>
+            
             <td>Piscina</td>
-            <td><asp:CheckBox ID="CheckBox3" runat="server" Checked='<%#Convert.ToBoolean(Eval("piscina")) %>' /></td>
             </tr>
             <tr>
+            <td><asp:CheckBox ID="CheckBox4" Enabled="False" runat="server" Checked='<%#Convert.ToBoolean(Eval("loc_joaca")) %>' /></td>
+            
             <td>Loc de joaca pentru copii</td>
-            <td><asp:CheckBox ID="CheckBox4" runat="server" Checked='<%#Convert.ToBoolean(Eval("loc_joaca")) %>' /></td>
             </tr>
             <tr>
+            <td><asp:CheckBox ID="CheckBox5" Enabled="False" runat="server" Checked='<%#Convert.ToBoolean(Eval("wifi")) %>' /></td>
+            
             <td>Internet wireless</td>
-            <td><asp:CheckBox ID="CheckBox5" runat="server" Checked='<%#Convert.ToBoolean(Eval("wifi")) %>' /></td>
             </tr>
             <tr>
+            <td><asp:CheckBox ID="CheckBox6" Enabled="False" runat="server" Checked='<%#Convert.ToBoolean(Eval("minibar")) %>' /></td>
+            
             <td>Minibar camera</td>
-            <td><asp:CheckBox ID="CheckBox6" runat="server" Checked='<%#Convert.ToBoolean(Eval("minibar")) %>' /></td>
             </tr>
             <tr>
+            <td><asp:CheckBox ID="CheckBox7" Enabled="False" runat="server" Checked='<%#Convert.ToBoolean(Eval("televizor")) %>' /></td>
+            
             <td>Televizor camera</td>
-            <td><asp:CheckBox ID="CheckBox7" runat="server" Checked='<%#Convert.ToBoolean(Eval("televizor")) %>' /></td>
             </tr>
             <tr>
+            <td><asp:CheckBox ID="CheckBox8" Enabled="False" runat="server" Checked='<%#Convert.ToBoolean(Eval("telefon")) %>' /></td>
+            
             <td>Telefon camera</td>
-            <td><asp:CheckBox ID="CheckBox8" runat="server" Checked='<%#Convert.ToBoolean(Eval("telefon")) %>' /></td>
             </tr>
             <tr>
+            <td><asp:CheckBox ID="CheckBox9" Enabled="False" runat="server" Checked='<%#Convert.ToBoolean(Eval("transport")) %>' /></td>
+            
             <td>Trasnport aeroport-hotel</td>
-            <td><asp:CheckBox ID="CheckBox9" runat="server" Checked='<%#Convert.ToBoolean(Eval("transport")) %>' /></td>
             </tr>
             <tr>
+            <td><asp:CheckBox ID="CheckBox10" Enabled="False" runat="server" Checked='<%#Convert.ToBoolean(Eval("ingrijire_medicala")) %>' /></td>
+            
             <td>Facilitati ingrijire medicala</td>
-            <td><asp:CheckBox ID="CheckBox10" runat="server" Checked='<%#Convert.ToBoolean(Eval("ingrijire_medicala")) %>' /></td>
             </tr>
             </tbody>
             </table>
             
             
             </div>
+
+            </div>
+        </div>
+            
+            
             
             </ItemTemplate>
         </asp:DataList>
