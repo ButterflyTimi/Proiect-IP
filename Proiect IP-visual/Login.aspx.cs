@@ -47,7 +47,7 @@ public partial class Autentificare : System.Web.UI.Page
             ResponseLogin.Text = "Username inexistent!";
             //Response.Write("Username inexistent");
         }
-
+        
 
     }
 }
