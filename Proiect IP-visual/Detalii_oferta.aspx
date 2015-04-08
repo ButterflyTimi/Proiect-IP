@@ -14,20 +14,20 @@
             <div class="imagine_sejur">
                 <div class="imagine" style="background: url('<%# "pozeSejururi/" + Eval("imagine") %>')">
             
-<<<<<<< HEAD
+            </div>
             <div id="rez" class="rezervare" visible="false" >
-                <asp:Button ID="rezerva" runat="server" Text="Rezerva" OnClick="rezerva_buton"/>
+                <asp:Button ID="rezerva" class="btn primary-button" runat="server" Text="Rezerva" OnClick="rezerva_buton"/>
                 <p>Numar locuri rezervare</p>
                 <asp:TextBox ID="nr_loc" runat="server">
                 </asp:TextBox>
                 
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Completeaza numarul de locuri" ControlToValidate="nr_loc"></asp:RequiredFieldValidator>
-=======
+
                 
             </div>
                 
-            </div>
->>>>>>> 17407e412b13849d66736f217a2e3a16ad68a34a
+            
+
             </div>
             
             
