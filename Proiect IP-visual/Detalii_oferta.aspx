@@ -13,9 +13,8 @@
         <div class="row">
             <div class="imagine_sejur">
                 <div class="imagine" style="background: url('<%# "pozeSejururi/" + Eval("imagine") %>')">
-                </div>
-            </div>
             
+<<<<<<< HEAD
             <div id="rez" class="rezervare" visible="false" >
                 <asp:Button ID="rezerva" runat="server" Text="Rezerva" OnClick="rezerva_buton"/>
                 <p>Numar locuri rezervare</p>
@@ -23,7 +22,18 @@
                 </asp:TextBox>
                 
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Completeaza numarul de locuri" ControlToValidate="nr_loc"></asp:RequiredFieldValidator>
+=======
+                <div id="rez" class="rezervare" visible="false">
+                <asp:Button ID="rezerva" runat="server" Text="Rezerva" CssClass="btn primary-button" />
+                <p>Numar locuri disponibile</p>
+                <asp:TextBox ID="nr_loc" runat="server" CssClass="form-control"></asp:TextBox>
             </div>
+                
+            </div>
+>>>>>>> 17407e412b13849d66736f217a2e3a16ad68a34a
+            </div>
+            
+            
 
             <div class="detalii_sejur">
                 <h3>
