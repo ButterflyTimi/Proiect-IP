@@ -59,7 +59,8 @@ public partial class Detalii_oferta : System.Web.UI.Page
         
         int temp = 0;
         int loc_rez = 0;
-        
+
+        /*
         Button img = (Button)sender;
         DataListItem item = (DataListItem)img.NamingContainer;    
 
@@ -70,7 +71,8 @@ public partial class Detalii_oferta : System.Web.UI.Page
             var replyText = ((TextBox)this.DataList1.Items[item.ItemIndex].FindControl("nr_loc")).Text;
             loc_rez = Convert.ToInt32(replyText);
         }
-           
+        */
+        loc_rez = Convert.ToInt32(nr_loc.Text);
         string cmdText4 = "select locuri_disp from Sejur where id_sejur=@q";
         using (SqlConnection con4 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
         {
@@ -134,7 +136,7 @@ public partial class Detalii_oferta : System.Web.UI.Page
             com3.ExecuteNonQuery();
             con3.Close();
 
-           // Response.Redirect(Request.RawUrl);
+           Response.Redirect(Request.RawUrl);
         }
         else
         {
