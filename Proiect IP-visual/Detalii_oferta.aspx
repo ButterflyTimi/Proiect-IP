@@ -17,9 +17,12 @@
             </div>
             
             <div id="rez" class="rezervare" visible="false" >
-                <asp:Button ID="rezerva" runat="server" Text="Rezerva" />
-                <p>Numar locuri disponibile</p>
-                <asp:TextBox ID="nr_loc" runat="server"></asp:TextBox>
+                <asp:Button ID="rezerva" runat="server" Text="Rezerva" OnClick="rezerva_buton"/>
+                <p>Numar locuri rezervare</p>
+                <asp:TextBox ID="nr_loc" runat="server">
+                </asp:TextBox>
+                
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Completeaza numarul de locuri" ControlToValidate="nr_loc"></asp:RequiredFieldValidator>
             </div>
 
             <div class="detalii_sejur">
