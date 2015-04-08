@@ -14,23 +14,13 @@
             <div class="imagine_sejur">
                 <div class="imagine" style="background: url('<%# "pozeSejururi/" + Eval("imagine") %>')">
             
+            </div>            
+                                   
             </div>
-            <div id="rez" class="rezervare" visible="false" >
-                <asp:Button ID="rezerva" class="btn primary-button" runat="server" Text="Rezerva" OnClick="rezerva_buton"/>
-                <p>Numar locuri rezervare</p>
-                <asp:TextBox ID="nr_loc" runat="server">
-                </asp:TextBox>
-                
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Completeaza numarul de locuri" ControlToValidate="nr_loc"></asp:RequiredFieldValidator>
+            
+           
 
-                
-            </div>
-                
-            
-
-            </div>
-            
-            
+           
 
             <div class="detalii_sejur">
                 <h3>
@@ -124,11 +114,17 @@
 
             </div>
         </div>
-            
-            
-            
+                            
             </ItemTemplate>
         </asp:DataList>
-       
+        <div id="rez" class="rezervare" runat="server" >
+                <asp:Button ID="rezerva" visible="false" class="btn primary-button" runat="server" Text="Rezerva" OnClick="rezerva_buton"/>
+                <asp:Label ID="text_locuri" visible="false" runat="server">Numar locuri rezervare</asp:Label>  
+                <asp:TextBox ID="nr_loc" visible="false" runat="server">
+                </asp:TextBox>
+                
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Completeaza numarul de locuri" ControlToValidate="nr_loc"></asp:RequiredFieldValidator>
+                
+            </div> 
        
 </asp:Content>
