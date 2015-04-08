@@ -13,14 +13,17 @@
         <div class="row">
             <div class="imagine_sejur">
                 <div class="imagine" style="background: url('<%# "pozeSejururi/" + Eval("imagine") %>')">
-                </div>
+            
+                <div id="rez" class="rezervare" visible="false">
+                <asp:Button ID="rezerva" runat="server" Text="Rezerva" CssClass="btn primary-button" />
+                <p>Numar locuri disponibile</p>
+                <asp:TextBox ID="nr_loc" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
+                
+            </div>
             </div>
             
-            <div id="rez" class="rezervare" visible="false" >
-                <asp:Button ID="rezerva" runat="server" Text="Rezerva" />
-                <p>Numar locuri disponibile</p>
-                <asp:TextBox ID="nr_loc" runat="server"></asp:TextBox>
-            </div>
+            
 
             <div class="detalii_sejur">
                 <h3>
