@@ -23,10 +23,7 @@
                 
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Completeaza numarul de locuri" ControlToValidate="nr_loc"></asp:RequiredFieldValidator>
 =======
-                <div id="rez" class="rezervare" visible="false">
-                <asp:Button ID="rezerva" runat="server" Text="Rezerva" CssClass="btn primary-button" />
-                <p>Numar locuri disponibile</p>
-                <asp:TextBox ID="nr_loc" runat="server" CssClass="form-control"></asp:TextBox>
+                
             </div>
                 
             </div>
