@@ -25,13 +25,25 @@ public partial class Detalii_oferta : System.Web.UI.Page
             {
                 try
                 {
-                   
+                    nume2 = Session["USER_ID"].ToString();
+
+                    string nume = "select UserId from aspnet_Membership where username='" + nume2 + "'";
+                    SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                    conn.Open();
+                    SqlCommand cmd6 = new SqlCommand(nume,conn);
+                    object nume3 = cmd6.ExecuteScalar();
+                    conn.Close();
+
+                    
                     q = Server.UrlDecode(q);
                     SqlDataSource1.SelectCommand = " SELECT Sejur.id_sejur as IdSejur, Sejur.nume, Sejur.descriere, Sejur.pret, Sejur.imagine, Sejur.data_in, Sejur.data_out, Sejur.locuri_disp, Hotel.stele, Facilitati.restaurant, Facilitati.bar, Facilitati.piscina, Facilitati.loc_joaca, Facilitati.wifi, Facilitati.minibar, Facilitati.televizor, Facilitati.telefon, Facilitati.transport, Facilitati.ingrijire_medicala FROM Sejur, Hotel, Facilitati WHERE Sejur.id_sejur = @q and Hotel.id_hotel=Sejur.id_hotel and Hotel.id_hotel = Facilitati.id_hotel";
                     SqlDataSource1.SelectParameters.Clear();
                     SqlDataSource1.SelectParameters.Add("q", q);
                     SqlDataSource1.DataBind();
 
+                    string stele_sejur = "select stele from Hotel, Sejur where Hotel.id=Sejur.id_hotel and Sejur.id_sejur='" + q + "'";
+                    string stele_recomand = "select stele from Recomandari where id_user='" + nume3 + "'";
+                    string vizite = "select nr_vizite from Recomandari where id_user='" + nume3 + "'";
                     
                     sqlVerif = "Select count(*) from Oferta_vizite where id_oferta=@q";
                     SqlConnection con6 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
@@ -39,11 +51,30 @@ public partial class Detalii_oferta : System.Web.UI.Page
                     SqlCommand com6 = new SqlCommand(sqlVerif, con6);
                     com6.Parameters.AddWithValue("q", q);
                     int userCount = (int)com6.ExecuteScalar();
+                    Response.Write(userCount);
+                    SqlCommand com10 = new SqlCommand(stele_sejur,con6);
+                    SqlCommand com11 = new SqlCommand(stele_recomand,con6);
+                    SqlCommand com12 = new SqlCommand(vizite, con6);
+                    
+                    double stele_sej = (double)com10.ExecuteScalar(); //astea 3 sunt cu probleme, aparent nu ruleaza nimic dupa ele
+                    double stele_rec = (double)com11.ExecuteScalar();
+                    double nr_vizite = (double)com12.ExecuteScalar();
+                   
                     con6.Close();
                     
+                    double procent = (stele_rec * nr_vizite + stele_sej)/nr_vizite+1;
+
+                    string update_rec = "update Recomandari set nr_vizite=nr_vizite+1 and stele=@procent where id_user='"+ nume3 +"'";
+                    SqlConnection con8 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                    con8.Open();
+                    SqlCommand cmd5 = new SqlCommand(update_rec,con8);
+                    cmd5.Parameters.AddWithValue("@procent",procent);
+                    cmd5.ExecuteNonQuery();
+                    con8.Close();
+
                     if (userCount > 0)
                     {
-                        string sql1 = "update Oferta_vizite set nr_vizite=nr_vizite+1";
+                        string sql1 = "update Oferta_vizite set nr_vizite=nr_vizite+1 where id_oferta=@q";
                         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                         con.Open();
                         SqlCommand com7 = new SqlCommand(sql1, con);
@@ -64,7 +95,7 @@ public partial class Detalii_oferta : System.Web.UI.Page
                         con.Close();
                     }
 
-                    nume2 = Session["USER_ID"].ToString();
+                    
                     if (nume2 != null)
                     {
 
