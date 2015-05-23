@@ -40,7 +40,7 @@ public partial class Detalii_oferta : System.Web.UI.Page
                     com6.Parameters.AddWithValue("q", q);
                     int userCount = (int)com6.ExecuteScalar();
                     con6.Close();
-                    Response.Write(userCount);
+                    
                     if (userCount > 0)
                     {
                         string sql1 = "update Oferta_vizite set nr_vizite=nr_vizite+1";
@@ -59,7 +59,9 @@ public partial class Detalii_oferta : System.Web.UI.Page
                         con.Open();
                         SqlCommand com8 = new SqlCommand(sql2, con);
                         com8.Parameters.AddWithValue("q", q);
+                        com8.Parameters.AddWithValue("vizit", vizit);
                         com8.ExecuteNonQuery();
+                        
                         con.Close();
                     }
 
