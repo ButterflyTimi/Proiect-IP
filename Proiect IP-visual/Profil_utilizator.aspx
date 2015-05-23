@@ -85,10 +85,10 @@
         
         <asp:Label ID="Label6" runat="server" CssClass="question" Text="Ce nivel al hotelului va doriti?"></asp:Label>
 
-        <asp:RadioButton ID="first" runat="server" Text="2 stele" GroupName="5"/>
-        <asp:RadioButton ID="second" runat="server" Text="3 stele" GroupName="5"/>
-        <asp:RadioButton ID="third" runat="server" text="4 stele" GroupName="5"/>
-        <asp:RadioButton ID="fourth" runat="server" text="5 stele" GroupName="5"/>
+        <asp:RadioButton ID="first" runat="server" Text="2" GroupName="5"/>
+        <asp:RadioButton ID="second" runat="server" Text="3" GroupName="5"/>
+        <asp:RadioButton ID="third" runat="server" text="4" GroupName="5"/>
+        <asp:RadioButton ID="fourth" runat="server" text="5" GroupName="5"/>
 
     <asp:Button ID="Salveaza" runat="server" CssClass="btn primary-button" Text="Salveaza" onclick="Button2_Click" />
     </div>

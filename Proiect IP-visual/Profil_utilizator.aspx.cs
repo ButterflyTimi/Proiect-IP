@@ -23,8 +23,7 @@ public partial class Profil_utilizator : System.Web.UI.Page
                 {
                     q = Server.UrlDecode(q);
                     usernamevechibox.Text = q;
-                  
-
+                    
                     string temp = string.Empty;
         string cmdText = "select Forma_turism from aspnet_Membership where username='" + usernamevechibox.Text + "'";
         using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
@@ -285,10 +284,15 @@ public partial class Profil_utilizator : System.Web.UI.Page
         }
         else
         {
+            string temp = null;
+            string q = Request.Params["q"];
+            q = Server.UrlDecode(q);
+
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             con.Open();
 
-            string insert = "update aspnet_Membership set Forma_turism=@turism, Durata_sejur=@dsejur, Suma_sejur=@ssejur, Nivel_hotel=@hotel where username='"+usernamevechibox.Text+"'";
+            string insert = "update aspnet_Membership set Forma_turism=@turism, Durata_sejur=@dsejur, Suma_sejur=@ssejur, Nivel_hotel=@hotel where username='"+usernamevechibox.Text+"'";      
+
             SqlCommand com = new SqlCommand(insert,con);
 
             com.Parameters.AddWithValue("@turism", rd2);
@@ -297,8 +301,34 @@ public partial class Profil_utilizator : System.Web.UI.Page
             com.Parameters.AddWithValue("@hotel", rd5);
 
             com.ExecuteNonQuery();
+
+            string getid = "Select UserId from aspnet_Membership where username ='" + usernamevechibox.Text + "'";
+            using (SqlCommand com2 = new SqlCommand(getid, con))
+            {
+
+            using (SqlDataReader reader = com2.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                     temp = reader.GetValue(0).ToString();
+                    Response.Write(temp);
+                }
+            }
+
+            }
+            int unit = 1;
+            string stele_rec = "insert into Recomandari (id_user,stele,nr_vizite) values (@q,@stele,@nr)";
+            SqlCommand com3 = new SqlCommand(stele_rec, con);
+            com3.Parameters.AddWithValue("@q", temp);
+            com3.Parameters.AddWithValue("@stele", Convert.ToDouble(rd5));
+            com3.Parameters.AddWithValue("@nr", unit);
+
+            com3.ExecuteNonQuery();
             con.Close();
             Response.Redirect("Home.aspx");
+
+
+            
         }
     }
     protected void username_Click(object sender, EventArgs e)
