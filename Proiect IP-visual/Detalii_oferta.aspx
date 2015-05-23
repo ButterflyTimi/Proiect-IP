@@ -99,7 +99,7 @@
             <tr>
             <td><asp:CheckBox ID="CheckBox9" Enabled="False" runat="server" Checked='<%#Convert.ToBoolean(Eval("transport")) %>' /></td>
             
-            <td>Trasnport aeroport-hotel</td>
+            <td>Transport aeroport-hotel</td>
             </tr>
             <tr>
             <td><asp:CheckBox ID="CheckBox10" Enabled="False" runat="server" Checked='<%#Convert.ToBoolean(Eval("ingrijire_medicala")) %>' /></td>

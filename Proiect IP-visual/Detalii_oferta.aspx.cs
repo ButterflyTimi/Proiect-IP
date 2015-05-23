@@ -20,6 +20,7 @@ public partial class Detalii_oferta : System.Web.UI.Page
         {
             string q = Request.Params["q"];
             string nume2 = null;
+            string sqlVerif = null;
             if (q != null)
             {
                 try
@@ -31,6 +32,37 @@ public partial class Detalii_oferta : System.Web.UI.Page
                     SqlDataSource1.SelectParameters.Add("q", q);
                     SqlDataSource1.DataBind();
 
+                    
+                    sqlVerif = "Select count(*) from Oferta_vizite where id_oferta=@q";
+                    SqlConnection con6 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                    con6.Open();
+                    SqlCommand com6 = new SqlCommand(sqlVerif, con6);
+                    com6.Parameters.AddWithValue("q", q);
+                    int userCount = (int)com6.ExecuteScalar();
+                    con6.Close();
+                    Response.Write(userCount);
+                    if (userCount > 0)
+                    {
+                        string sql1 = "update Oferta_vizite set nr_vizite=nr_vizite+1";
+                        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                        con.Open();
+                       SqlCommand com7 = new SqlCommand(sql1, con);
+                        com7.Parameters.AddWithValue("q", q);
+                        com7.ExecuteNonQuery();
+                        con.Close();
+                    }
+                    else
+                    {
+                        int vizit = 1;
+                        string sql2 = "Insert INTO Oferta_vizite (id_oferta, nr_vizite) VALUES (@q, @vizit)";
+                        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                        con.Open();
+                        SqlCommand com8 = new SqlCommand(sql2, con);
+                        com8.Parameters.AddWithValue("q", q);
+                        com8.ExecuteNonQuery();
+                        con.Close();
+                    }
+
                     nume2 = Session["USER_ID"].ToString();
                     if (nume2 != null)
                     {
@@ -39,6 +71,7 @@ public partial class Detalii_oferta : System.Web.UI.Page
                         text_locuri.Visible = true;
                         nr_loc.Visible = true;
                     }
+    
                 }
                 catch (Exception err)
                 {
