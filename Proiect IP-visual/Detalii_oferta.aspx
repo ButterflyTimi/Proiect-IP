@@ -14,14 +14,10 @@
             <div class="imagine_sejur">
                 <div class="imagine" style="background: url('<%# "pozeSejururi/" + Eval("imagine") %>')">
             
-            </div>            
+                </div>            
                                    
             </div>
-            
            
-
-           
-
             <div class="detalii_sejur">
                 <h3>
                     <asp:Label ID="numeLabel" runat="server" Text='<%# Eval("nume") %>' />

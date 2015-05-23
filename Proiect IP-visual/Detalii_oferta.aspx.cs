@@ -46,7 +46,7 @@ public partial class Detalii_oferta : System.Web.UI.Page
                         string sql1 = "update Oferta_vizite set nr_vizite=nr_vizite+1";
                         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                         con.Open();
-                       SqlCommand com7 = new SqlCommand(sql1, con);
+                        SqlCommand com7 = new SqlCommand(sql1, con);
                         com7.Parameters.AddWithValue("q", q);
                         com7.ExecuteNonQuery();
                         con.Close();
@@ -61,7 +61,6 @@ public partial class Detalii_oferta : System.Web.UI.Page
                         com8.Parameters.AddWithValue("q", q);
                         com8.Parameters.AddWithValue("vizit", vizit);
                         com8.ExecuteNonQuery();
-                        
                         con.Close();
                     }
 
