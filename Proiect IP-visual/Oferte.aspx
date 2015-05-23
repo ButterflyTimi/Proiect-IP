@@ -52,14 +52,10 @@
             <div class="col-sm-12 imagine_titlu">
                 <div class="imagine" style="background: url('<%# "pozeSejururi/" + Eval("imagine") %>')"></div>
                 <h4>
+                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%# "~/Detalii_oferta.aspx?q=" + Eval("id_sejur") %>'>
                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("nume") %>' />
+                    </asp:HyperLink>
                 </h4>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12 text-center">
-                <asp:HyperLink ID="HyperLink1" runat="server" CssClass="btn primary-button" NavigateUrl='<%# "~/Detalii_oferta.aspx?q=" + Eval("id_sejur") %>' Text="Vezi Oferta">
-                </asp:HyperLink>
             </div>
         </div>
         </ItemTemplate>
