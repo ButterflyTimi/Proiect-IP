@@ -27,15 +27,6 @@ public partial class Detalii_oferta : System.Web.UI.Page
                 {
                     
 
-                    string nume = "select UserId from aspnet_Membership where username='" + nume2 + "'";
-                    SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-                    conn.Open();
-                    SqlCommand cmd6 = new SqlCommand(nume,conn);
-                    object name = cmd6.ExecuteScalar();
-                    string nume3 = Convert.ToString(name);
-                    
-                    conn.Close();
-
                     
                     q = Server.UrlDecode(q);
                     SqlDataSource1.SelectCommand = " SELECT Sejur.id_sejur as IdSejur, Sejur.nume, Sejur.descriere, Sejur.pret, Sejur.imagine, Sejur.data_in, Sejur.data_out, Sejur.locuri_disp, Hotel.stele, Facilitati.restaurant, Facilitati.bar, Facilitati.piscina, Facilitati.loc_joaca, Facilitati.wifi, Facilitati.minibar, Facilitati.televizor, Facilitati.telefon, Facilitati.transport, Facilitati.ingrijire_medicala FROM Sejur, Hotel, Facilitati WHERE Sejur.id_sejur = @q and Hotel.id_hotel=Sejur.id_hotel and Hotel.id_hotel = Facilitati.id_hotel";
@@ -53,7 +44,17 @@ public partial class Detalii_oferta : System.Web.UI.Page
 
                     if (Session["USER_ID"] != null)
                     {
+
                         nume2 = Session["USER_ID"].ToString();
+
+                        string nume = "select UserId from aspnet_Membership where username='" + nume2 + "'";
+                        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                        conn.Open();
+                        SqlCommand cmd6 = new SqlCommand(nume, conn);
+                        object name = cmd6.ExecuteScalar();
+                        string nume3 = Convert.ToString(name);
+
+                        conn.Close();
                         string stele_sejur = "select Hotel.stele from Hotel, Sejur where Hotel.id_hotel=Sejur.id_hotel and Sejur.id_sejur=@q";
                         string stele_recomand = "select stele from Recomandari where id_user='" + nume3 + "'";
                         string vizite = "select nr_vizite from Recomandari where id_user='" + nume3 + "'";
@@ -83,11 +84,23 @@ public partial class Detalii_oferta : System.Web.UI.Page
                         SqlConnection con13 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                         con13.Open();
                         SqlCommand com13 = new SqlCommand(pret_sejur, con13);
+                        com13.Parameters.AddWithValue("@q", q);
                         SqlCommand com14 = new SqlCommand(sum_min, con13);
                         SqlCommand com15 = new SqlCommand(sum_max, con13);
                         double pret_sej = Convert.ToDouble(com13.ExecuteScalar());
-                        double min = Convert.ToDouble(com14.ExecuteScalar());
-                        double max = Convert.ToDouble(com15.ExecuteScalar());
+                        double min = 0;
+                        double max = 0;
+                       
+                        if ((com14.ExecuteScalar() is DBNull) || (com15.ExecuteScalar() is DBNull))
+                        {
+                            min = 0;
+                            max = 0;
+                        }
+                        else
+                        {
+                            min = Convert.ToDouble(com14.ExecuteScalar());
+                            max = Convert.ToDouble(com15.ExecuteScalar());
+                        }
                         con13.Close();
 
                         double new_vizit = nr_vizite + 1;
@@ -208,14 +221,28 @@ public partial class Detalii_oferta : System.Web.UI.Page
             SqlCommand cmd8 = new SqlCommand(get_numar, conn3);
             cmd8.Parameters.AddWithValue("@nume", nume6);
 
-            double medie = Convert.ToDouble(cmd7.ExecuteScalar());
-            int numar = Convert.ToInt32(cmd8.ExecuteScalar());
+            double medie = 0;
+            int numar = 0;
+
+            if ((cmd7.ExecuteScalar() is DBNull) || (cmd8.ExecuteScalar() is DBNull))
+            {
+                medie = 0;
+                numar = 0;
+            }
+            else
+            {
+                 medie = Convert.ToDouble(cmd7.ExecuteScalar());
+                 numar = Convert.ToInt32(cmd8.ExecuteScalar());
+            }
+
+            
 
             conn3.Close();
 
             SqlConnection con13 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
             con13.Open();
             SqlCommand com13 = new SqlCommand(pret_sejur, con13);
+            com13.Parameters.AddWithValue("@q", q);
             double pret_sej = Convert.ToDouble(com13.ExecuteScalar());
             con13.Close();
 
