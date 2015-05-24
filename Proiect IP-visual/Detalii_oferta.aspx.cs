@@ -166,147 +166,154 @@ public partial class Detalii_oferta : System.Web.UI.Page
 
     protected void rezerva_buton(object sender, EventArgs e)
     {
-        string q = Request.Params["q"];
-        q = Server.UrlDecode(q);
-        string nume4 = Session["USER_ID"].ToString();
-        
-        int temp = 0;
-        int loc_rez = 0;
-        string nume5 = "select UserId from aspnet_Membership where username='" + nume4 + "'";
-        SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-        conn.Open();
-        SqlCommand cmd6 = new SqlCommand(nume5, conn);
-        object nume6 = cmd6.ExecuteScalar();
-        nume6 = Convert.ToString(nume6);
-        conn.Close();
-        /*
-        Button img = (Button)sender;
-        DataListItem item = (DataListItem)img.NamingContainer;    
-
-        if (item != null)
+        try
         {
-            
-            int itemIndex = item.ItemIndex;
-            var replyText = ((TextBox)this.DataList1.Items[item.ItemIndex].FindControl("nr_loc")).Text;
-            loc_rez = Convert.ToInt32(replyText);
-        }
-        */
-        loc_rez = Convert.ToInt32(nr_loc.Text);
+            string q = Request.Params["q"];
+            q = Server.UrlDecode(q);
+            string nume4 = Session["USER_ID"].ToString();
 
-        string get_rez = "select medie_rezervari from Recomandari where id_user=@nume";
-        string get_numar = "select nr_rezervari from Recomandari where id_user=@nume";
-        string pret_sejur = "select Sejur.pret from Sejur where Sejur.id_sejur=@q";
+            int temp = 0;
+            int loc_rez = 0;
+            string nume5 = "select UserId from aspnet_Membership where username='" + nume4 + "'";
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            conn.Open();
+            SqlCommand cmd6 = new SqlCommand(nume5, conn);
+            object nume6 = cmd6.ExecuteScalar();
+            nume6 = Convert.ToString(nume6);
+            conn.Close();
+            /*
+            Button img = (Button)sender;
+            DataListItem item = (DataListItem)img.NamingContainer;    
 
-        SqlConnection conn3 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-        conn3.Open();
-
-        SqlCommand cmd7 = new SqlCommand(get_rez, conn3);
-        cmd7.Parameters.AddWithValue("@nume",nume6);
-
-        SqlCommand cmd8 = new SqlCommand(get_numar, conn3);
-        cmd8.Parameters.AddWithValue("@nume", nume6);
-
-        double medie = Convert.ToDouble(cmd7.ExecuteScalar());
-        int numar = Convert.ToInt32(cmd8.ExecuteScalar());
-
-        conn3.Close();
-
-        SqlConnection con13 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-        con13.Open();
-        SqlCommand com13 = new SqlCommand(pret_sejur, con13);
-        double pret_sej = Convert.ToDouble(com13.ExecuteScalar());
-        con13.Close();
-
-        if ((medie != 0) || (numar != 0))
-        {
-            medie = (medie * numar + pret_sej) / (numar + 1);
-            numar = numar + 1;
-        }
-        else
-        {
-            medie = pret_sej;
-            numar = 1;
-        }
-
-
-        SqlConnection conn2 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-        conn2.Open();
-        string update2 = "update Recomandari set medie_rezervari=@medie, nr_rezervari=@numar where id_user=@nume";
-        SqlCommand com2 = new SqlCommand(update2, conn2);
-        com2.Parameters.AddWithValue("@medie", medie);
-        com2.Parameters.AddWithValue("@numar", numar);
-        com2.Parameters.AddWithValue("@nume", nume6);
-        com2.ExecuteNonQuery();
-        conn2.Close();
-
-        string cmdText4 = "select locuri_disp from Sejur where id_sejur=@q";
-        using (SqlConnection con4 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
-        {
-            
-            con4.Open();
-            using (SqlCommand cmd = new SqlCommand(cmdText4, con4))
+            if (item != null)
             {
-                cmd.Parameters.AddWithValue("@q", q);
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        temp = Convert.ToInt32(reader.GetValue(0));
-                    }
-                } 
+            
+                int itemIndex = item.ItemIndex;
+                var replyText = ((TextBox)this.DataList1.Items[item.ItemIndex].FindControl("nr_loc")).Text;
+                loc_rez = Convert.ToInt32(replyText);
             }
-         
-           
-            temp = temp - loc_rez;
-        }
-        if (temp > 0)
-        {
+            */
+            loc_rez = Convert.ToInt32(nr_loc.Text);
+
+            string get_rez = "select medie_rezervari from Recomandari where id_user=@nume";
+            string get_numar = "select nr_rezervari from Recomandari where id_user=@nume";
+            string pret_sejur = "select Sejur.pret from Sejur where Sejur.id_sejur=@q";
+
+            SqlConnection conn3 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            conn3.Open();
+
+            SqlCommand cmd7 = new SqlCommand(get_rez, conn3);
+            cmd7.Parameters.AddWithValue("@nume", nume6);
+
+            SqlCommand cmd8 = new SqlCommand(get_numar, conn3);
+            cmd8.Parameters.AddWithValue("@nume", nume6);
+
+            double medie = Convert.ToDouble(cmd7.ExecuteScalar());
+            int numar = Convert.ToInt32(cmd8.ExecuteScalar());
+
+            conn3.Close();
+
+            SqlConnection con13 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            con13.Open();
+            SqlCommand com13 = new SqlCommand(pret_sejur, con13);
+            double pret_sej = Convert.ToDouble(com13.ExecuteScalar());
+            con13.Close();
+
+            if ((medie != 0) || (numar != 0))
+            {
+                medie = (medie * numar + pret_sej) / (numar + 1);
+                numar = numar + 1;
+            }
+            else
+            {
+                medie = pret_sej;
+                numar = 1;
+            }
 
 
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-            con.Open();
-            string update = "update Sejur set locuri_disp=@loc where id_sejur=@q";
-            SqlCommand com = new SqlCommand(update, con);
-            com.Parameters.AddWithValue("@loc", temp);
-            com.Parameters.AddWithValue("@q", q);
-            com.ExecuteNonQuery();
-            con.Close();
-            nume4 = Session["USER_ID"].ToString();
-            Guid userId = Guid.NewGuid();
+            SqlConnection conn2 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+            conn2.Open();
+            string update2 = "update Recomandari set medie_rezervari=@medie, nr_rezervari=@numar where id_user=@nume";
+            SqlCommand com2 = new SqlCommand(update2, conn2);
+            com2.Parameters.AddWithValue("@medie", medie);
+            com2.Parameters.AddWithValue("@numar", numar);
+            com2.Parameters.AddWithValue("@nume", nume6);
+            com2.ExecuteNonQuery();
+            conn2.Close();
 
-            string cmdText5 = "select UserId from aspnet_Membership where username='"+nume4+"'";
-            using (SqlConnection con5 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+            string cmdText4 = "select locuri_disp from Sejur where id_sejur=@q";
+            using (SqlConnection con4 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
             {
 
-                con5.Open();
-                using (SqlCommand cmd2 = new SqlCommand(cmdText5, con5))
+                con4.Open();
+                using (SqlCommand cmd = new SqlCommand(cmdText4, con4))
                 {
-
-                    using (SqlDataReader reader = cmd2.ExecuteReader())
+                    cmd.Parameters.AddWithValue("@q", q);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            userId= (Guid)reader.GetValue(0);
+                            temp = Convert.ToInt32(reader.GetValue(0));
                         }
                     }
                 }
+
+
+                temp = temp - loc_rez;
             }
+            if (temp > 0)
+            {
 
-            SqlConnection con3 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
-            con3.Open();
-            string insert = "insert into SejururiUseri (id_sejur,id_Client,locuri_rezervate) values (@id_s,@id_cl,@loc_r)";
-            SqlCommand com3 = new SqlCommand(insert, con3);
-            com3.Parameters.AddWithValue("@id_s", q);
-            com3.Parameters.AddWithValue("@id_cl",userId);
-            com3.Parameters.AddWithValue("@loc_r", loc_rez);
-            com3.ExecuteNonQuery();
-            con3.Close();
 
-           Response.Redirect(Request.RawUrl);
-        }
-        else
-        {
-            Response.Write("Numar insuficient de locuri");
-        }
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                con.Open();
+                string update = "update Sejur set locuri_disp=@loc where id_sejur=@q";
+                SqlCommand com = new SqlCommand(update, con);
+                com.Parameters.AddWithValue("@loc", temp);
+                com.Parameters.AddWithValue("@q", q);
+                com.ExecuteNonQuery();
+                con.Close();
+                nume4 = Session["USER_ID"].ToString();
+                Guid userId = Guid.NewGuid();
+
+                string cmdText5 = "select UserId from aspnet_Membership where username='" + nume4 + "'";
+                using (SqlConnection con5 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString))
+                {
+
+                    con5.Open();
+                    using (SqlCommand cmd2 = new SqlCommand(cmdText5, con5))
+                    {
+
+                        using (SqlDataReader reader = cmd2.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                userId = (Guid)reader.GetValue(0);
+                            }
+                        }
+                    }
+                }
+
+                SqlConnection con3 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                con3.Open();
+                string insert = "insert into SejururiUseri (id_sejur,id_Client,locuri_rezervate) values (@id_s,@id_cl,@loc_r)";
+                SqlCommand com3 = new SqlCommand(insert, con3);
+                com3.Parameters.AddWithValue("@id_s", q);
+                com3.Parameters.AddWithValue("@id_cl", userId);
+                com3.Parameters.AddWithValue("@loc_r", loc_rez);
+                com3.ExecuteNonQuery();
+                con3.Close();
+
+                Response.Redirect(Request.RawUrl);
+            }
+            else
+            {
+                Response.Write("Numar insuficient de locuri");
+            }
     }
+        catch (Exception err)
+                {
+                    Response.Write(err);
+                }
+   }
 }
