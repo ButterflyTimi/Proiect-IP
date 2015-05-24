@@ -32,6 +32,7 @@ public partial class Detalii_oferta : System.Web.UI.Page
                     conn.Open();
                     SqlCommand cmd6 = new SqlCommand(nume,conn);
                     object nume3 = cmd6.ExecuteScalar();
+                    nume3 = Convert.ToString(nume3) ;
                     conn.Close();
 
                     
@@ -41,7 +42,7 @@ public partial class Detalii_oferta : System.Web.UI.Page
                     SqlDataSource1.SelectParameters.Add("q", q);
                     SqlDataSource1.DataBind();
 
-                    string stele_sejur = "select stele from Hotel, Sejur where Hotel.id=Sejur.id_hotel and Sejur.id_sejur='" + q + "'";
+                    string stele_sejur = "select Hotel.stele from Hotel, Sejur where Hotel.id_hotel=Sejur.id_hotel and Sejur.id_sejur=@q";
                     string stele_recomand = "select stele from Recomandari where id_user='" + nume3 + "'";
                     string vizite = "select nr_vizite from Recomandari where id_user='" + nume3 + "'";
                     
@@ -50,25 +51,40 @@ public partial class Detalii_oferta : System.Web.UI.Page
                     con6.Open();
                     SqlCommand com6 = new SqlCommand(sqlVerif, con6);
                     com6.Parameters.AddWithValue("q", q);
-                    int userCount = (int)com6.ExecuteScalar();
-                    Response.Write(userCount);
-                    SqlCommand com10 = new SqlCommand(stele_sejur,con6);
-                    SqlCommand com11 = new SqlCommand(stele_recomand,con6);
-                    SqlCommand com12 = new SqlCommand(vizite, con6);
-                    
-                    double stele_sej = (double)com10.ExecuteScalar(); //astea 3 sunt cu probleme, aparent nu ruleaza nimic dupa ele
-                    double stele_rec = (double)com11.ExecuteScalar();
-                    double nr_vizite = (double)com12.ExecuteScalar();
-                   
+                    int userCount = (int)com6.ExecuteScalar();                                    
                     con6.Close();
-                    
-                    double procent = (stele_rec * nr_vizite + stele_sej)/nr_vizite+1;
 
-                    string update_rec = "update Recomandari set nr_vizite=nr_vizite+1 and stele=@procent where id_user='"+ nume3 +"'";
+                    SqlConnection con10 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                    con10.Open();
+                    SqlCommand com10 = new SqlCommand(stele_sejur, con10);
+                    com10.Parameters.AddWithValue("@q", q);
+                    double stele_sej = Convert.ToDouble(com10.ExecuteScalar());
+                    con10.Close();
+
+                    SqlConnection con11 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                    con11.Open();
+                    SqlCommand com11 = new SqlCommand(stele_recomand, con11);
+                    double stele_rec = Convert.ToDouble(com11.ExecuteScalar());
+                    con11.Close();
+
+                    SqlConnection con12 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
+                    con12.Open();
+                    SqlCommand com12 = new SqlCommand(vizite, con12);                    
+                    double nr_vizite = Convert.ToDouble(com12.ExecuteScalar());
+                    con12.Close();
+
+                    double new_vizit = nr_vizite + 1;
+
+                    double procent = (stele_rec * nr_vizite + stele_sej)/new_vizit;
+                    nr_vizite = new_vizit;
+                    Response.Write(procent);
+                    string update_rec = "update Recomandari set nr_vizite=@nr_vizite , stele=@procent where id_user=@userId";
                     SqlConnection con8 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                     con8.Open();
                     SqlCommand cmd5 = new SqlCommand(update_rec,con8);
                     cmd5.Parameters.AddWithValue("@procent",procent);
+                    cmd5.Parameters.AddWithValue("@nr_vizite", nr_vizite);
+                    cmd5.Parameters.AddWithValue("@userId", nume3);
                     cmd5.ExecuteNonQuery();
                     con8.Close();
 
@@ -107,6 +123,7 @@ public partial class Detalii_oferta : System.Web.UI.Page
                 }
                 catch (Exception err)
                 {
+                    Response.Write(err);
                 }
             }
             else
