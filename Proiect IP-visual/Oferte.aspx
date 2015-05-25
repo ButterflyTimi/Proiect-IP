@@ -54,6 +54,9 @@
                 <h4>
                     <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%# "~/Detalii_oferta.aspx?q=" + Eval("id_sejur") %>'>
                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("nume") %>' />
+                   <br/> Stele:<asp:Label ID="Label2" runat="server" Text='<%# Eval("stele") %>' />
+                    <br />Pret:<asp:Label ID="Label3" runat="server" Text='<%# Eval("pret") %>' /> Euro
+                    <br/> Tip:<asp:Label ID="Label4" runat="server" Text='<%# Eval("tip") %>' />
                     </asp:HyperLink>
                 </h4>
             </div>
@@ -64,7 +67,7 @@
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:ConnectionString1 %>" 
         
-    SelectCommand="SELECT Sejur.id_sejur, Sejur.nume, Sejur.pret, Sejur.id_hotel, Sejur.imagine, Hotel.id_hotel AS idHotel, Hotel.nume AS HotelNume, Hotel.stele, Sejur.id_tipoferta, TipOferta.denumire, Sejur.descriere FROM Sejur INNER JOIN Hotel ON Sejur.id_hotel = Hotel.id_hotel INNER JOIN TipOferta ON Sejur.id_tipoferta = TipOferta.id_tipoferta where 1=1"></asp:SqlDataSource>
+    SelectCommand="SELECT Sejur.id_sejur, Sejur.nume, Sejur.pret as pret, Sejur.id_hotel, Sejur.imagine, Hotel.id_hotel AS idHotel, Hotel.nume AS HotelNume, Hotel.stele as stele, Sejur.id_tipoferta, TipOferta.denumire, Sejur.descriere, Sejur.Forma_turism as tip FROM Sejur INNER JOIN Hotel ON Sejur.id_hotel = Hotel.id_hotel INNER JOIN TipOferta ON Sejur.id_tipoferta = TipOferta.id_tipoferta where 1=1"></asp:SqlDataSource>
 </div>
     
     </div>
