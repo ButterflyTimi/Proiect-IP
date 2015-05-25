@@ -33,5 +33,7 @@ SelectCommand="SELECT TOP 4 Sejur.id_sejur, Sejur.nume, Sejur.pret, Sejur.id_hot
     </div>
     </div>
 </div>
+
+
 </asp:Content>
 
