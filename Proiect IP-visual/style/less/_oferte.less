@@ -37,13 +37,14 @@
 					}
 					h4 {
 						position: absolute;
-						bottom: 20px;
+						top: 180px;
+						height: 60px;
 						text-align: center;
 						left: 15px;
+						right: 0px;
 						margin-right: 15px;
 						padding: 10px;
 						background-color: rgba(68, 114, 127, 0.9);
-						color: @brand-neutral;
 						.transition( 0.3s, ease);
 						&:hover {
 							cursor: pointer;
@@ -55,7 +56,28 @@
 						a {
 							text-decoration: none;
 							color: @brand-neutral;
-						}	
+						}
+					}
+					.detalii {
+						.make-row();
+						margin-top: 5px;
+						.stele {
+							.make-sm-column(12);
+							text-align: center;
+							img {
+								width: 30%;
+								height: 20px;
+							}
+						}
+						.pret {
+							.make-sm-column(6);
+							text-align: left;
+						}
+						.categorie {
+							.make-sm-column(6);
+							text-align: right;
+							text-transform: capitalize;
+						}
 					}
 				}
 			}

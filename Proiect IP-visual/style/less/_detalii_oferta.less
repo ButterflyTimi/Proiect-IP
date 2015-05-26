@@ -21,3 +21,68 @@
 		border-left: 10px solid @brand-neutral;
 	}
 }
+.recomandari-wrapper {
+	h2 {
+		border-bottom: 1px solid @brand-neutral;
+		border-left: 10px solid @brand-neutral;
+		margin-bottom: 30px;
+		padding: 5px;
+	}
+	.recomandari {
+		.make-sm-column(3);
+		.imagine_titlu {
+			.imagine {
+				width: 100%;
+				height: 250px;
+				background-size: cover!important;
+				background-repeat: no-repeat;
+				background-position: center;
+				border: 2px solid @brand-primary;
+			}
+			h4 {
+				position: absolute;
+				top: 180px;
+				height: 60px;
+				text-align: center;
+				left: 15px;
+				right: 0px;
+				margin-right: 15px;
+				padding: 10px;
+				background-color: rgba(68, 114, 127, 0.9);
+				.transition( 0.3s, ease);
+				&:hover {
+					cursor: pointer;
+					.transform(scale(1.1));
+					a {
+						color: white;
+					}
+				}
+				a {
+					text-decoration: none;
+					color: @brand-neutral;
+				}
+			}
+		}
+		.detalii {
+			.make-row();
+			margin-top: 5px;
+			.stele {
+				.make-sm-column(12);
+				text-align: center;
+				img {
+					width: 30%;
+					height: 20px;
+				}
+			}
+			.pret {
+				.make-sm-column(6);
+				text-align: left;
+			}
+			.categorie {
+				.make-sm-column(6);
+				text-align: right;
+				text-transform: capitalize;
+			}
+		}
+	}
+}

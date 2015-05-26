@@ -114,13 +114,52 @@
             </ItemTemplate>
         </asp:DataList>
         <div id="rez" class="rezervare" runat="server" >
-                <asp:Button ID="rezerva" visible="false" class="btn primary-button" runat="server" Text="Rezerva" OnClick="rezerva_buton"/>
-                <asp:Label ID="text_locuri" visible="false" runat="server">Numar locuri rezervare</asp:Label>  
-                <asp:TextBox ID="nr_loc" visible="false" runat="server">
-                </asp:TextBox>
+            <asp:Label ID="text_locuri" visible="false" runat="server">Numar locuri rezervare</asp:Label>  
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ForeColor="Red" ControlToValidate="nr_loc"></asp:RequiredFieldValidator>
                 
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Completeaza numarul de locuri" ControlToValidate="nr_loc"></asp:RequiredFieldValidator>
+            <asp:TextBox ID="nr_loc" visible="false" runat="server">
+            </asp:TextBox>
+             <asp:Button ID="rezerva" visible="false" class="btn primary-button" runat="server" Text="Rezerva" OnClick="rezerva_buton"/>
+                    
                 
-            </div> 
-       
+        </div>
+ 
+ <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+ConnectionString="<%$ ConnectionStrings:ConnectionString1 %>"
+SelectCommand="SELECT TOP 4 Sejur.id_sejur, Sejur.nume, Sejur.pret, Sejur.id_hotel, Sejur.imagine, Hotel.id_hotel AS idHotel, Hotel.nume AS HotelNume, Hotel.stele, Sejur.id_tipoferta, TipOferta.denumire, Sejur.descriere, Sejur.Forma_turism FROM Sejur INNER JOIN Hotel ON Sejur.id_hotel = Hotel.id_hotel INNER JOIN TipOferta ON Sejur.id_tipoferta = TipOferta.id_tipoferta INNER JOIN Facilitati ON Hotel.id_hotel = Facilitati.id_hotel">
+</asp:SqlDataSource> 
+
+<div class="row recomandari-wrapper">
+
+    <h2>Din aceeasi categorie</h2>
+
+    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2">
+            <ItemTemplate>
+
+            <div class="recomandari">
+                <div class="imagine_titlu">
+                    <div class="imagine" style="background: url('<%# "pozeSejururi/" + Eval("imagine") %>')"></div>
+                    <h4>
+                        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%# "~/Detalii_oferta.aspx?q=" + Eval("id_sejur") %>' >
+                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("nume") %>' />
+                        </asp:HyperLink>
+                    </h4>
+                    <div class="detalii">
+                        <div class="stele">
+                            <asp:Image ID="imgStatus" runat="server" ImageUrl='<%# Eval("stele", "star{0}.png").ToString() %>'/>
+                        </div>
+                        <div class="pret">
+                            Pret: 
+                            <asp:Label ID="pretLabel" runat="server" Text='<%# Eval("pret","{0} euro") %>'/>
+                        </div>
+                        <div class="categorie">
+                            <asp:Label ID="Label2" runat="server" Text='<%# Eval("Forma_turism") %>' />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </ItemTemplate>
+    </asp:Repeater>
+</div>       
 </asp:Content>
