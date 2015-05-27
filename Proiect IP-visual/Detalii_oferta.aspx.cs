@@ -31,6 +31,11 @@ public partial class Detalii_oferta : System.Web.UI.Page
                     SqlDataSource1.SelectParameters.Add("q", q);
                     SqlDataSource1.DataBind();
 
+                    SqlDataSource2.SelectCommand = " SELECT TOP 4 Sejur.id_sejur, Sejur.nume, Sejur.pret, Sejur.id_hotel, Sejur.imagine, Hotel.id_hotel AS idHotel, Hotel.nume AS HotelNume, Hotel.stele, Sejur.id_tipoferta, TipOferta.denumire, Sejur.descriere, Sejur.Forma_turism FROM Sejur INNER JOIN Hotel ON Sejur.id_hotel = Hotel.id_hotel INNER JOIN TipOferta ON Sejur.id_tipoferta = TipOferta.id_tipoferta INNER JOIN Facilitati ON Hotel.id_hotel = Facilitati.id_hotel WHERE Sejur.Forma_turism = ( SELECT Sejur.Forma_turism FROM Sejur WHERE Sejur.Id_Sejur = @q) AND Sejur.Id_Sejur <> ( SELECT Sejur.Id_Sejur FROM Sejur WHERE Sejur.Id_Sejur = @q)";
+                    SqlDataSource2.SelectParameters.Clear();
+                    SqlDataSource2.SelectParameters.Add("q", q);
+                    SqlDataSource2.DataBind();
+
                     sqlVerif = "Select count(*) from Oferta_vizite where id_oferta=@q";
                     SqlConnection con6 = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
                     con6.Open();
