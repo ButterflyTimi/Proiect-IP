@@ -125,8 +125,7 @@
         </div>
  
  <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-ConnectionString="<%$ ConnectionStrings:ConnectionString1 %>"
-SelectCommand="SELECT TOP 4 Sejur.id_sejur, Sejur.nume, Sejur.pret, Sejur.id_hotel, Sejur.imagine, Hotel.id_hotel AS idHotel, Hotel.nume AS HotelNume, Hotel.stele, Sejur.id_tipoferta, TipOferta.denumire, Sejur.descriere, Sejur.Forma_turism FROM Sejur INNER JOIN Hotel ON Sejur.id_hotel = Hotel.id_hotel INNER JOIN TipOferta ON Sejur.id_tipoferta = TipOferta.id_tipoferta INNER JOIN Facilitati ON Hotel.id_hotel = Facilitati.id_hotel">
+ConnectionString="<%$ ConnectionStrings:ConnectionString1 %>">
 </asp:SqlDataSource> 
 
 <div class="row recomandari-wrapper">
