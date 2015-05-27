@@ -39,7 +39,7 @@
 
                     </div>
                 </div>
-                <div class="search-wrapper">
+                <div class="search-wrapper" style="visibility: hidden;">
                     <div class="search">
                         <div class="input-group">
                             <asp:TextBox ID="searchTB" CssClass="form-control" runat="server" placeholder=""></asp:TextBox>
