@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+using System.Configuration;
 
 public partial class PaginaTest : System.Web.UI.Page
 {
@@ -13,6 +15,7 @@ public partial class PaginaTest : System.Web.UI.Page
         {
             try
             {
+
                 string nume = Session["USER_ID"].ToString();
                 if (nume != null)
                 {
@@ -25,7 +28,8 @@ public partial class PaginaTest : System.Web.UI.Page
                
             }
             catch (Exception err)
-            { 
+            {
+               
             }
         }
     }
